@@ -3,336 +3,398 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Happy Birthday Zeenat 💕</title>
+<title>Happy Birthday Zeenat</title>
 <style>
-* { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
-body { background: #07000d; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow: hidden; width: 100vw; height: 100vh; }
-.screen { display: none; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; overflow-y: auto; }
-.screen.active { display: flex; animation: slideIn 0.4s ease-out forwards; }
-@keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-.btn { margin-top: 15px; background: linear-gradient(135deg, #ff3366, #ff6bdb); color: #fff; border: none; padding: 12px 24px; font-size: 14px; font-weight: bold; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 51, 102, 0.4); z-index: 10; }
-.btn-disabled { opacity: 0.35; pointer-events: none; }
-.card { background: rgba(255, 255, 255, 0.95); border-radius: 18px; padding: 20px; width: 90%; max-width: 320px; color: #333; box-shadow: 0 10px 30px rgba(0,0,0,0.3); z-index: 5; }
-.input-pass { width: 85%; padding: 12px; margin: 15px 0; border-radius: 20px; border: 1.5px solid #ff3366; background: #fff; outline: none; font-size: 16px; text-align: center; color: #333; }
-.quiz-opt { background: #311b92; color: #fff; padding: 10px; border-radius: 12px; margin: 6px 0; cursor: pointer; font-size: 14px; }
-.tray { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 320px; margin-top: 12px; }
-.tok { background: #fff; border: 1.5px solid #bae6fd; color: #0369a1; padding: 8px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: grab; transition: transform 0.2s, opacity 0.3s; box-shadow: 0 2px 5px rgba(0,0,0,0.08); }
-.box-d { background: #fff; border: 2px dashed #fecdd3; border-radius: 14px; width: 90%; max-width: 320px; height: 230px; overflow-y: scroll; padding: 15px; text-align: left; color: #5c0d23; font-size: 14px; line-height: 1.5; }
-.map-box { position: relative; width: 90%; max-width: 320px; height: 260px; background: #1e293b; border: 2px solid #ff3366; border-radius: 16px; overflow: hidden; margin: 10px auto; }
-.pin { position: absolute; font-size: 28px; cursor: pointer; transition: all 0.8s ease; }
-.cvs { border: 2px solid #ff4081; border-radius: 10px; background: #05010e; width: 90%; max-width: 320px; height: 220px; margin: 10px auto; }
-.sakura-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 1; }
-.sakura-petal { position: absolute; background: #ffb7c5; border-radius: 100% 0% 100% 0%; opacity: 0.7; animation: fallSakura linear infinite; }
-@keyframes fallSakura { 0% { transform: translate(0, -20px) rotate(0deg); } 100% { transform: translate(120px, 105vh) rotate(360deg); } }
-.floating-heart { position: absolute; font-size: 24px; animation: floatUp 4s linear infinite; pointer-events: none; }
-@keyframes floatUp { 0% { transform: translateY(100vh) scale(0.5); opacity: 0.8; } 100% { transform: translateY(-10vh) scale(1.2); opacity: 0; } }
-.flame { width: 16px; height: 26px; background: #fbbf24; border-radius: 50% 50% 20% 20%; margin: 0 auto; box-shadow: 0 0 15px #f59e0b; animation: flicker 0.1s infinite alternate; }
-@keyframes flicker { from { transform: scale(1); } to { transform: scale(0.9); } }
+* { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; }
+body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow: hidden; width: 100vw; height: 100vh; }
+.screen { display: none; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 15px; }
+.screen.active { display: flex; animation: fadeScene 0.4s ease-out forwards; }
+@keyframes fadeScene { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+
+.btn { margin-top: 14px; background: linear-gradient(135deg, #ff2a6d, #9b5de5); color: #fff; border: none; padding: 12px 28px; font-size: 14px; font-weight: 700; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 42, 109, 0.4); z-index: 20; letter-spacing: 0.5px; }
+.btn-disabled { opacity: 0.3; pointer-events: none; }
+
+/* 1. Portal Theme (Deep Galaxy Violet) */
+#s1 { background: radial-gradient(circle at center, #240046 0%, #0a0017 100%); }
+.portal-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 18px; padding: 22px; width: 88%; max-width: 310px; }
+.portal-title { font-size: 19px; font-weight: 700; color: #ff70a6; margin-bottom: 6px; }
+.pass-box { width: 100%; padding: 12px; border-radius: 10px; border: 1.5px solid #ff70a6; background: rgba(0,0,0,0.5); color: #fff; outline: none; font-size: 16px; text-align: center; margin: 12px 0; }
+
+/* 2. Cake Theme (Romantic Warm Maroon) */
+#s2 { background: radial-gradient(circle at center, #3d0c1e 0%, #110006 100%); }
+.candle-src { width: 22px; height: 55px; background: #ff4d6d; border-radius: 4px; margin: 0 auto 20px; cursor: pointer; position: relative; border: 1.5px solid #fff; box-shadow: 0 0 10px #ff4d6d; }
+.flame { width: 14px; height: 22px; background: #ffbe0b; border-radius: 50% 50% 20% 20%; position: absolute; top: -20px; left: 3px; box-shadow: 0 0 14px #fb5607; animation: flick 0.12s infinite alternate; }
+@keyframes flick { from { transform: scale(1); } to { transform: scale(0.88); } }
+.cake-wrapper { width: 220px; height: 130px; position: relative; margin: 10px auto; cursor: pointer; }
+.cake-base { width: 190px; height: 80px; background: #590d22; border-radius: 14px 14px 8px 8px; position: absolute; bottom: 0; left: 15px; border-bottom: 5px solid #38040e; display: flex; align-items: center; justify-content: flex-start; padding-left: 20px; }
+.cake-slice { width: 85px; height: 80px; background: #c9184a; position: absolute; right: 15px; bottom: 0; border-radius: 0 14px 8px 0; transition: transform 0.6s ease; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; text-align: center; box-shadow: -2px 0 8px rgba(0,0,0,0.3); }
+.cake-flame { display: none; width: 14px; height: 22px; background: #ffbe0b; border-radius: 50% 50% 20% 20%; position: absolute; top: 16px; left: 103px; box-shadow: 0 0 14px #fb5607; }
+
+/* 3. Frameless Photos Theme (Midnight Sapphire) */
+#s3 { background: #03071e; padding: 0; }
+.frameless-container { width: 100vw; height: 75vh; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.frameless-img { width: 100%; height: 100%; object-fit: contain; }
+.frameless-overlay { position: absolute; bottom: 20px; left: 0; width: 100%; text-align: center; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 20px 10px; font-size: 15px; font-weight: 600; color: #ffb703; }
+
+/* 4. Letters Diary (Vintage Rose) */
+#s4 { background: radial-gradient(circle at center, #2b091f 0%, #0f010a 100%); }
+.diary-box { background: rgba(255,255,255,0.06); border: 1.5px dashed #ff758f; border-radius: 14px; width: 88%; max-width: 320px; height: 250px; overflow-y: scroll; padding: 16px; text-align: left; font-size: 14px; line-height: 1.6; color: #ffccd5; }
+
+/* 5. Dustbin Moveable Words (Ocean Depth) */
+#s5 { background: radial-gradient(circle at center, #001f3f 0%, #000814 100%); }
+.bin-zone { width: 85px; height: 85px; border: 2px dashed #00b4d8; border-radius: 16px; margin: 12px auto; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #90e0ef; font-weight: bold; background: rgba(0, 180, 216, 0.08); }
+.moveable-tray { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 320px; margin-top: 12px; }
+.move-tok { background: rgba(255,255,255,0.08); border: 1.5px solid #00b4d8; color: #caf0f8; padding: 8px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* 6. Heart Moveable Tokens (Velvet Love) */
+#s6 { background: radial-gradient(circle at center, #3a0ca3 0%, #050114 100%); }
+.heart-collector { width: 90px; height: 90px; border: 2px dashed #f72585; border-radius: 50%; margin: 12px auto; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #f72585; font-weight: bold; background: rgba(247, 37, 133, 0.08); }
+.heart-tok { background: rgba(247, 37, 133, 0.15); border: 1.5px solid #f72585; color: #ffb3c6; padding: 8px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* 7. Canvas Heart Catch Game (Cyber Neon) */
+#s7 { background: #080112; }
+.game-canvas { border: 1.5px solid #f72585; border-radius: 14px; background: #000; width: 90%; max-width: 320px; height: 210px; }
+
+/* 8. 4-Frame Mario Runner (Classic Retro Night) */
+#s8 { background: #0d1b2a; }
+
+/* 9. Delhi to Bijnor Map (Dark Blueprint) */
+#s9 { background: #03071e; }
+.map-route { position: relative; width: 88%; max-width: 320px; height: 250px; background: #0b132b; border: 1.5px solid #48cae4; border-radius: 14px; overflow: hidden; margin: 12px auto; }
+.point { position: absolute; padding: 6px 12px; background: #0077b6; border-radius: 20px; font-size: 12px; font-weight: bold; transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
+
+/* 10. Auto Scroll Feed (Onyx Black) */
+#s10 { background: #000; padding: 10px 0; }
+.feed-container { width: 92%; max-width: 330px; height: 82vh; overflow-y: scroll; border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 12px; }
+.feed-item { width: 100%; border-radius: 12px; margin-bottom: 14px; object-fit: cover; }
 </style>
 </head>
 <body>
-  
+
 <audio id="bgSong" loop src="bg-music.mp3"></audio>
-<div class="sakura-container" id="sakuraContainer"></div>
 
-<!-- 1. Password Screen -->
-<div id="p1" class="screen active" style="background: radial-gradient(circle, #268533 0%, #07000d 100%);">
-  <div class="card">
-    <h2 style="color:#2185b; margin-bottom:8px;">Secret Portal 🔐</h2>
-    <p style="font-size:13px; color:#555; margin-bottom:4px;">Enter password to unlock:</p>
-    <input type="text" id="passInput" class="input-pass" placeholder="Password (Hint: zeenu)">
-    <button class="btn" onclick="unlockSite()">Unlock Surprise ✨</button>
+<!-- S1: Portal -->
+<div id="s1" class="screen active">
+  <div class="portal-card">
+    <div class="portal-title">ZEENAT'S PORTAL</div>
+    <div style="font-size:12px; color:#aaa; margin-bottom:8px;">Enter password to unlock</div>
+    <input type="text" id="passCode" class="pass-box" placeholder="Password: zeenu">
+    <button class="btn" onclick="checkAuth()">UNLOCK</button>
   </div>
 </div>
 
-<!-- 2. Cake Cut -->
-<div id="p2" class="screen" style="background: linear-gradient(180deg, #fff4e6 0%, #ffd8a8 100%); color:#3d2206;">
-  <h2>Cut Birthday Cake! 🎂</h2>
-  <div style="margin: 20px auto; position: relative; width: 140px; height: 110px; cursor: pointer;" onclick="cutCakeAction()">
-    <div id="cakeFlame" class="flame"></div>
-    <div style="width: 6px; height: 16px; background: #fff; margin: 0 auto;"></div>
-    <div style="width: 120px; height: 70px; background: #f472b6; border-radius: 12px; margin: 0 auto; position: relative; border: 3px solid #be185d;">
-      <div id="slice" style="position: absolute; right: 0; width: 40px; height: 100%; background: #fb7185; border-radius: 0 10px 10px 0; transition: transform 0.5s ease;"></div>
+<!-- S2: Candle & Cake -->
+<div id="s2" class="screen">
+  <h3 style="color:#ff758f; margin-bottom:12px;">Light Candle & Cut Cake</h3>
+  <div class="candle-src" id="candleSource" onclick="lightCake()">
+    <div class="flame"></div>
+  </div>
+  <div class="cake-wrapper" onclick="cutCakeSlice()">
+    <div class="cake-flame" id="cFlame"></div>
+    <div style="width:4px; height:14px; background:#fff; position:absolute; top:36px; left:108px;"></div>
+    <div class="cake-base"><span style="font-size:11px; color:#ffccd5; font-weight:bold;">HAPPY BIRTHDAY</span></div>
+    <div class="cake-slice" id="cSlice">TAP SLICE</div>
+  </div>
+  <p id="cakeTxt" style="font-size:13px; color:#ffd166; margin-top:8px;">Tap candle to light the cake flame</p>
+  <button id="btnS2" class="btn btn-disabled" onclick="toScreen(3)">VIEW PHOTOS</button>
+</div>
+
+<!-- S3: Frameless Photos -->
+<div id="s3" class="screen">
+  <div class="frameless-container" onclick="nextFramelessPhoto()">
+    <img id="fImg" class="frameless-img" src="photo1.jpg" alt="Photo Slide">
+    <div class="frameless-overlay" id="fCap">The sweetest smile (Tap to flip)</div>
+  </div>
+  <button id="btnS3" class="btn btn-disabled" onclick="toScreen(4)">READ LETTERS</button>
+</div>
+
+<!-- S4: Diary -->
+<div id="s4" class="screen">
+  <h3 style="color:#ff758f; margin-bottom:10px;">Letters for Zeenat</h3>
+  <div class="diary-box">
+    <div id="dHead" style="font-weight:bold; color:#ff4d6d; margin-bottom:8px;">Entry #1</div>
+    <div id="dBody">Happy Birthday to the most special person. Your presence brings peace and immense happiness into my life every single day.</div>
+  </div>
+  <button id="btnS4" class="btn" onclick="nextDiary()">NEXT LETTER</button>
+</div>
+
+<!-- S5: Dustbin Movable Words -->
+<div id="s5" class="screen">
+  <h3 style="color:#00b4d8;">Clear All Tensions</h3>
+  <p style="font-size:12px; color:#90e0ef; margin-top:4px;">Tap each token to drop it into dustbin</p>
+  <div class="bin-zone" id="binTarget">DUSTBIN</div>
+  <div class="moveable-tray" id="trayTrash">
+    <div class="move-tok" onclick="moveToTrash(this)">Misunderstandings</div>
+    <div class="move-tok" onclick="moveToTrash(this)">Late Replies</div>
+    <div class="move-tok" onclick="moveToTrash(this)">Arguments & Ego</div>
+    <div class="move-tok" onclick="moveToTrash(this)">Distance Blues</div>
+    <div class="move-tok" onclick="moveToTrash(this)">Overthinking</div>
+  </div>
+  <p id="trashTxt" style="font-size:13px; color:#00b4d8; margin-top:10px;">5 items remaining</p>
+  <button id="btnS5" class="btn btn-disabled" onclick="toScreen(6)">COLLECT LOVE</button>
+</div>
+
+<!-- S6: Heart Movable Words -->
+<div id="s6" class="screen">
+  <h3 style="color:#f72585;">Collect Love Tokens</h3>
+  <p style="font-size:12px; color:#ffb3c6; margin-top:4px;">Tap each token to pack it with love</p>
+  <div class="heart-collector" id="heartTarget">COLLECT</div>
+  <div class="moveable-tray" id="trayHearts">
+    <div class="heart-tok" onclick="moveToHeart(this)">Endless Care</div>
+    <div class="heart-tok" onclick="moveToHeart(this)">Late Night Talks</div>
+    <div class="heart-tok" onclick="moveToHeart(this)">Pure Happiness</div>
+    <div class="heart-tok" onclick="moveToHeart(this)">Unconditional Support</div>
+    <div class="heart-tok" onclick="moveToHeart(this)">Forever Love</div>
+  </div>
+  <p id="heartTxt" style="font-size:13px; color:#f72585; margin-top:10px;">5 tokens remaining</p>
+  <button id="btnS6" class="btn btn-disabled" onclick="toScreen(7)">PLAY HEART GAME</button>
+</div>
+
+<!-- S7: Canvas Heart Catch Game -->
+<div id="s7" class="screen">
+  <h3 style="color:#f72585; margin-bottom:6px;">Catch Falling Hearts</h3>
+  <canvas id="heartCanvas" class="game-canvas" width="300" height="210"></canvas>
+  <p id="hScore" style="font-size:13px; color:#ffb3c6; margin-top:6px;">Hearts Caught: 0 / 5</p>
+  <button id="btnS7" class="btn btn-disabled" onclick="toScreen(8)">PLAY MARIO RUNNER</button>
+</div>
+
+<!-- S8: Mario Runner -->
+<div id="s8" class="screen">
+  <h3 style="color:#48cae4; margin-bottom:6px;">Reach Zeenat</h3>
+  <canvas id="marioCanvas" class="game-canvas" width="300" height="190" style="background:#050c1a;"></canvas>
+  <div style="display:flex; gap:12px; margin-top:8px;">
+    <button class="btn" style="margin:0; padding:10px 20px;" onclick="mJump()">JUMP</button>
+    <button class="btn" style="margin:0; padding:10px 20px;" onclick="mMove()">MOVE</button>
+  </div>
+  <button id="btnS8" class="btn btn-disabled" onclick="toScreen(9)">DELHI TO BIJNOR</button>
+</div>
+
+<!-- S9: Map Travel -->
+<div id="s9" class="screen">
+  <h3 style="color:#48cae4; margin-bottom:4px;">Delhi to Bijnor (161 KM)</h3>
+  <div class="map-route">
+    <div id="delhiPoint" class="point" style="bottom:25px; left:25px;">Delhi (Samar)</div>
+    <div id="bijnorPoint" class="point" style="top:25px; right:25px; background:#e63946;">Bijnor (Zeenat)</div>
+  </div>
+  <button id="btnBridge" class="btn" onclick="bridgeMap()">BRIDGE DISTANCE</button>
+  <button id="btnS9" class="btn btn-disabled" onclick="toScreen(10)">OPEN MEMORY FEED</button>
+</div>
+
+<!-- S10: Feed Alternating Photo/Video -->
+<div id="s10" class="screen">
+  <h3 style="color:#ff2a6d; margin-bottom:10px;">Our Journey</h3>
+  <div class="feed-container" id="autoFeed">
+    <img src="photo1.jpg" class="feed-item" alt="Moment 1">
+    <video src="edit1.mp4" class="feed-item" controls playsinline></video>
+    <img src="photo2.jpg" class="feed-item" alt="Moment 2">
+    <video src="feed-vid1.mp4" class="feed-item" controls playsinline></video>
+    <img src="photo3.jpg" class="feed-item" alt="Moment 3">
+    <video src="feed-vid2.mp4" class="feed-item" controls playsinline></video>
+    <img src="photo4.jpg" class="feed-item" alt="Moment 4">
+    <div style="padding: 25px 10px; text-align: center;">
+      <h2 style="color: #ff2a6d; margin-bottom: 8px;">HAPPY BIRTHDAY ZEENAT</h2>
+      <p style="font-size: 14px; color: #e2e8f0; line-height: 1.6;">Always and forever.</p>
     </div>
-  </div>
-  <p id="cakeMsg" style="font-weight:bold;">Tap the cake to cut a slice!</p>
-  <button id="btnS2" class="btn btn-disabled" onclick="goto(3)">Next: Memories 📸</button>
-</div>
-
-<!-- 3. Polaroid Scrapbook -->
-<div id="p3" class="screen" style="background: #f1f5f9; color: #0f172a;">
-  <div class="card" style="background:#fff; padding: 12px; border: 1px solid #cbd5e1; cursor: pointer;" onclick="nextPhoto()">
-    <img id="polaroidImg" src="photo1.jpg" style="width: 100%; height: 230px; object-fit: cover; border-radius: 8px;" alt="Memory">
-    <p id="polaroidTxt" style="margin-top: 12px; font-weight: 600; color: #334155;">The sweetest smile ✨</p>
-  </div>
-  <p style="font-size:12px; color:#64748b; margin-top:8px;">(Tap card to view next photo)</p>
-  <button id="btnS3" class="btn btn-disabled" onclick="goto(4)">Read Letters 💌</button>
-</div>
-
-<!-- 4. Letters Diary -->
-<div id="p4" class="screen" style="background: #fff5f7; color: #5c0d23;">
-  <h2 style="margin-bottom: 8px; color: #be123c;">Letters for You 💌</h2>
-  <div class="box-d">
-    <h3 id="lTitle" style="color: #e11d48; margin-bottom: 6px;">Letter #1 🌸</h3>
-    <p id="lTxt">Dear Zeenat, on your special day, I want to remind you how deeply treasured you are. You bring warmth, kindness, and boundless joy into my life every single day.</p>
-  </div>
-  <button id="btnS4" class="btn btn-disabled" onclick="nextLetter()" style="margin-top: 12px;">Next Letter ➡️</button>
-</div>
-
-<!-- 5. Dustbin Screen (Drag/Tap Movable Words) -->
-<div id="p5" class="screen" style="background: #e0f2fe; color: #0369a1;">
-  <h2>Clear All Tensions & Fights 🗑️</h2>
-  <p style="font-size: 13px; color: #0284c7; margin-top: 4px;">Tap each item to throw it away into the bin!</p>
-  <div id="binTarget" style="font-size: 55px; margin: 12px auto; cursor: pointer;">🗑️</div>
-  <div class="tray" id="tokenTray">
-    <div class="tok" onclick="throwToken(this)">Misunderstandings ❌</div>
-    <div class="tok" onclick="throwToken(this)">Late Replies ⏱️</div>
-    <div class="tok" onclick="throwToken(this)">Ego & Arguments 💔</div>
-    <div class="tok" onclick="throwToken(this)">Distance Blues 🌧️</div>
-    <div class="tok" onclick="throwToken(this)">Unsaid Words 🤐</div>
-  </div>
-  <p id="binStatus" style="font-size: 13px; font-weight: bold; margin-top: 10px; color: #0284c7;">5 things left to clean</p>
-  <button id="btnS5" class="btn btn-disabled" onclick="goto(6)">Play Heart Catch 💕</button>
-</div>
-
-<!-- 6. Catch Hearts Game (Canvas Game) -->
-<div id="p6" class="screen" style="background: #070014;">
-  <h3 style="color: #ff3366; margin-bottom: 6px;">Catch Zeenat's Hearts 💕</h3>
-  <canvas id="shooterCanvas" class="cvs" width="300" height="200"></canvas>
-  <p id="shooterScore" style="font-size: 13px; color: #ffb7c5; margin-top: 4px;">Hearts Caught: 0 / 5</p>
-  <button id="btnS6" class="btn btn-disabled" onclick="goto(7)">Play Mini Mario 🎮</button>
-</div>
-
-<!-- 7. Mario Mini Game -->
-<div id="p7" class="screen" style="background: #5c94fc;">
-  <h3 style="color: #fff; margin-bottom: 6px;">Reach Zeenat! 🍄</h3>
-  <canvas id="marioCanvas" class="cvs" width="300" height="180" style="background: #5c94fc; border-color: #fff;"></canvas>
-  <div style="display: flex; gap: 20px; justify-content: center; margin-top: 8px;">
-    <button class="btn" style="padding: 8px 20px; margin: 0;" onclick="marioJump()">JUMP ⬆️</button>
-    <button class="btn" style="padding: 8px 20px; margin: 0;" onclick="marioForward()">MOVE ➡️</button>
-  </div>
-  <button id="btnS7" class="btn btn-disabled" onclick="goto(8)">Delhi to Bijnor 📍</button>
-</div>
-
-<!-- 8. Delhi to Bijnor Map Distance -->
-<div id="p8" class="screen" style="background: #0f172a;">
-  <h3 style="color: #fff; margin-bottom: 4px;">Delhi to Bijnor (161 KM) 📍</h3>
-  <p style="font-size: 12px; color: #94a3b8; margin-bottom: 8px;">Tap 'Travel to Her' to bridge the distance!</p>
-  <div class="map-box">
-    <div id="pinDelhi" class="pin" style="bottom: 20px; left: 25px;">🚶‍♂️<br><span style="font-size: 10px; color: #fff;">Delhi</span></div>
-    <div id="pinBijnor" class="pin" style="top: 20px; right: 25px;">👸<br><span style="font-size: 10px; color: #fff;">Bijnor</span></div>
-  </div>
-  <button id="btnTravel" class="btn" onclick="startTravel()">Travel to Her 🚗💨</button>
-  <button id="btnS8" class="btn btn-disabled" onclick="goto(9)">Blow Candles 🕯️</button>
-</div>
-
-<!-- 9. Candle Blow -->
-<div id="p9" class="screen" style="background: #000;">
-  <h2>Make a Wish & Blow! 🕯️</h2>
-  <div style="margin: 30px auto; cursor: pointer;" onclick="blowCandle()">
-    <div id="candleFlameBig" class="flame" style="width: 22px; height: 35px;"></div>
-    <div style="width: 14px; height: 80px; background: #fff; border-radius: 6px; margin: 0 auto; box-shadow: 0 0 10px rgba(255,255,255,0.5);"></div>
-  </div>
-  <p id="candleMsg" style="font-size: 14px; color: #fbbf24;">Tap the flame to blow out the candle!</p>
-  <button id="btnS9" class="btn btn-disabled" onclick="goto(10)">Our Insta Feed 📱</button>
-</div>
-
-<!-- 10. Reel Feed / Final Love -->
-<div id="p10" class="screen" style="background: #000; color: #fff; padding: 10px;">
-  <div style="width: 100%; max-width: 320px; height: 380px; overflow-y: scroll; border: 2px solid #333; border-radius: 14px; padding: 10px; background: #111;">
-    <p style="font-size: 12px; color: #ff3366; margin-bottom: 8px; font-weight: bold;">Scroll down to view moments & edits 💕</p>
-    <video controls style="width: 100%; height: 180px; border-radius: 10px; margin-bottom: 10px;" src="edit1.mp4"></video>
-    <img src="photo2.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 10px;" alt="Feed Pic">
-    <img src="photo3.jpg" style="width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 10px;" alt="Feed Pic">
-    <h2 style="color: #ff3366; margin: 20px 0 10px 0;">I Love You Zeenat ❤️</h2>
-    <p style="font-size: 14px; color: #e2e8f0; line-height: 1.6;">Happy Birthday once again to the most beautiful person inside and out. Always yours!</p>
   </div>
 </div>
 
 <script>
-// Floating Sakura Petals
-const sCont = document.getElementById('sakuraContainer');
-for(let i=0; i<20; i++) {
-  const p = document.createElement('div');
-  p.className = 'sakura-petal';
-  const sz = (10 + Math.random() * 8) + 'px';
-  p.style.width = sz; p.style.height = sz;
-  p.style.left = Math.random() * 95 + 'vw';
-  p.style.animationDelay = Math.random() * 5 + 's';
-  p.style.animationDuration = (5 + Math.random() * 4) + 's';
-  sCont.appendChild(p);
+function toScreen(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('s' + n).classList.add('active');
+  if(n === 7) initHeartCatch();
+  if(n === 8) initMario();
+  if(n === 10) startAutoFeed();
 }
 
-function goto(id) {
-  const s = document.querySelectorAll('.screen');
-  for (let i = 0; i < s.length; i++) s[i].classList.remove('active');
-  document.getElementById('p' + id).classList.add('active');
-}
-
-// 1. Password
-function unlockSite() {
-  const v = document.getElementById('passInput').value.trim().toLowerCase();
+// S1: Auth
+function checkAuth() {
+  const v = document.getElementById('passCode').value.trim().toLowerCase();
   if(v === 'zeenu' || v === 'zeenat' || v === '1234' || v === 'samar') {
     document.getElementById('bgSong').play().catch(()=>{});
-    goto(2);
+    toScreen(2);
   } else {
-    alert('Password wrong! (Hint: zeenu)');
+    alert('Passcode is zeenu');
   }
 }
 
-// 2. Cake Cut
-let cCut = false;
-function cutCakeAction() {
-  if(cCut) return;
-  cCut = true;
-  document.getElementById('slice').style.transform = 'translate(12px, -10px)';
-  document.getElementById('cakeFlame').style.display = 'none';
-  document.getElementById('cakeMsg').innerText = "Yummy slice cut! 🎉";
+// S2: Cake & Candle
+let isLit = false;
+let isCut = false;
+function lightCake() {
+  if(isLit) return;
+  isLit = true;
+  document.getElementById('cFlame').style.display = 'block';
+  document.getElementById('candleSource').style.opacity = '0.3';
+  document.getElementById('cakeTxt').innerText = "Cake lit! Tap the slice to cut";
+}
+function cutCakeSlice() {
+  if(!isLit) {
+    alert("Tap candle to light the cake first!");
+    return;
+  }
+  if(isCut) return;
+  isCut = true;
+  const slice = document.getElementById('cSlice');
+  slice.style.transform = 'translate(18px, -15px)';
+  slice.innerText = 'I LOVE YOU';
+  document.getElementById('cakeTxt').innerText = "I LOVE YOU! Happy Birthday!";
   document.getElementById('btnS2').classList.remove('btn-disabled');
 }
 
-// 3. Polaroid
-let pi = 0;
-const pData = [
-  { img: 'photo1.jpg', txt: 'The sweetest smile ✨' },
-  { img: 'photo2.jpg', txt: 'Special moments together 💕' },
-  { img: 'photo3.jpg', txt: 'My favorite person forever 🌸' },
-  { img: 'photo4.jpg', txt: 'Happy Birthday Zeenat! 🔥' }
+// S3: Frameless Photos
+let fIdx = 0;
+const fPhotos = [
+  { img: 'photo1.jpg', cap: 'The sweetest smile' },
+  { img: 'photo2.jpg', cap: 'Special moments together' },
+  { img: 'photo3.jpg', cap: 'My favorite person forever' },
+  { img: 'photo4.jpg', cap: 'Happy Birthday Zeenat' }
 ];
-function nextPhoto() {
-  pi++;
-  if(pi < pData.length) {
-    document.getElementById('polaroidImg').src = pData[pi].img;
-    document.getElementById('polaroidTxt').innerText = pData[pi].txt;
-    if(pi === pData.length - 1) {
-      document.getElementById('btnS3').classList.remove('btn-disabled');
-    }
-  } else {
-    pi = 0;
-    document.getElementById('polaroidImg').src = pData[pi].img;
-    document.getElementById('polaroidTxt').innerText = pData[pi].txt;
+function nextFramelessPhoto() {
+  fIdx = (fIdx + 1) % fPhotos.length;
+  document.getElementById('fImg').src = fPhotos[fIdx].img;
+  document.getElementById('fCap').innerText = fPhotos[fIdx].cap + ' (Tap to flip)';
+  if(fIdx === fPhotos.length - 1) {
+    document.getElementById('btnS3').classList.remove('btn-disabled');
   }
 }
 
-// 4. Letters
-let li = 0;
-const lData = [
-  "Dear Zeenat, on your special day, I want to remind you how deeply treasured you are. You bring warmth, kindness, and boundless joy into my life every single day.",
-  "Every single conversation, every laugh, and every memory with you is something I hold close to my heart. You make every ordinary day feel extraordinary.",
-  "I promise to always stand by your side, support every ambition you have, and love you endlessly. Happy Birthday to the queen of my heart! 💖"
+// S4: Diary
+let dIdx = 0;
+const diaries = [
+  { h: "Entry #1", b: "Happy Birthday to the one who makes everything feel brighter and calmer. Having you in my life is something I am grateful for every single day." },
+  { h: "Entry #2", b: "Every conversation, laugh, and memory with you means the world to me. You make the ordinary feel truly special." },
+  { h: "Entry #3", b: "I promise to always stand by your side, support your ambitions, and care for you unconditionally. Happy Birthday Zeenat!" }
 ];
-function nextLetter() {
-  li++;
-  if(li < lData.length) {
-    document.getElementById('lTitle').innerText = 'Letter #' + (li + 1) + ' 💌';
-    document.getElementById('lTxt').innerText = lData[li];
-  } else {
-    document.getElementById('btnS4').innerText = "All Read! Go Next ➡️";
-    document.getElementById('btnS4').onclick = () => goto(5);
+function nextDiary() {
+  dIdx++;
+  if(dIdx < diaries.length) {
+    document.getElementById('dHead').innerText = diaries[dIdx].h;
+    document.getElementById('dBody').innerText = diaries[dIdx].b;
+  }
+  if(dIdx === diaries.length - 1) {
+    const btn = document.getElementById('btnS4');
+    btn.innerText = "PROCEED TO CLEANUP";
+    btn.onclick = () => toScreen(5);
   }
 }
-setTimeout(()=>{ document.getElementById('btnS4').classList.remove('btn-disabled'); }, 1500);
 
-// 5. Dustbin Interactive Tokens
-let tokensLeft = 5;
-function throwToken(el) {
-  el.style.transform = 'scale(0) translateY(-40px)';
+// S5: Moveable Trash Words
+let trashLeft = 5;
+function moveToTrash(el) {
+  const bin = document.getElementById('binTarget').getBoundingClientRect();
+  const r = el.getBoundingClientRect();
+  const dx = bin.left + bin.width/2 - (r.left + r.width/2);
+  const dy = bin.top + bin.height/2 - (r.top + r.height/2);
+  el.style.transform = `translate(${dx}px, ${dy}px) scale(0.2)`;
   el.style.opacity = '0';
   setTimeout(() => {
     el.remove();
-    tokensLeft--;
-    if(tokensLeft > 0) {
-      document.getElementById('binStatus').innerText = tokensLeft + ' things left to clean';
+    trashLeft--;
+    if(trashLeft > 0) {
+      document.getElementById('trashTxt').innerText = trashLeft + " items remaining";
     } else {
-      document.getElementById('binStatus').innerText = '✨ All negativity cleared! Only love left ❤️';
-      document.getElementById('binStatus').style.color = '#10b981';
+      document.getElementById('trashTxt').innerText = "All tension cleared!";
       document.getElementById('btnS5').classList.remove('btn-disabled');
     }
-  }, 200);
+  }, 300);
 }
 
-// 6. Hearts Game
-const cvs = document.getElementById('shooterCanvas');
-const ctx = cvs.getContext('2d');
-let hearts = [];
-let caught = 0;
-for(let i=0; i<5; i++) {
-  hearts.push({ x: 30 + Math.random()*220, y: 20 + Math.random()*120, r: 15 });
-}
-function drawHearts() {
-  ctx.clearRect(0, 0, cvs.width, cvs.height);
-  hearts.forEach(h => {
-    ctx.font = '22px Arial';
-    ctx.fillText('💖', h.x, h.y);
-  });
-}
-drawHearts();
-cvs.onclick = function(e) {
-  const rect = cvs.getBoundingClientRect();
-  const clickX = e.clientX - rect.left;
-  const clickY = e.clientY - rect.top;
-  hearts = hearts.filter(h => {
-    const dist = Math.hypot(h.x + 10 - clickX, h.y - 10 - clickY);
-    if(dist < 25) {
-      caught++;
-      document.getElementById('shooterScore').innerText = 'Hearts Caught: ' + caught + ' / 5';
-      if(caught >= 5) {
-        document.getElementById('btnS6').classList.remove('btn-disabled');
-      }
-      return false;
-    }
-    return true;
-  });
-  drawHearts();
-};
-
-// 7. Mario Mini Game
-const mCvs = document.getElementById('marioCanvas');
-const mCtx = mCvs.getContext('2d');
-let mX = 20, mY = 130, isJumping = false;
-function renderMario() {
-  mCtx.clearRect(0, 0, mCvs.width, mCvs.height);
-  mCtx.fillStyle = '#16a34a';
-  mCtx.fillRect(0, 150, mCvs.width, 30);
-  mCtx.font = '24px Arial';
-  mCtx.fillText('🏃‍♂️', mX, mY);
-  mCtx.fillText('👸', 250, 140);
-}
-renderMario();
-function marioJump() {
-  if(isJumping) return;
-  isJumping = true;
-  mY = 80;
-  renderMario();
-  setTimeout(() => { mY = 130; isJumping = false; renderMario(); }, 300);
-}
-function marioForward() {
-  mX += 30;
-  if(mX >= 220) {
-    mX = 220;
-    document.getElementById('btnS7').classList.remove('btn-disabled');
-  }
-  renderMario();
-}
-
-// 8. Delhi to Bijnor Travel
-function startTravel() {
-  const p = document.getElementById('pinDelhi');
-  p.style.bottom = '160px';
-  p.style.left = '190px';
-  document.getElementById('btnTravel').style.display = 'none';
+// S6: Moveable Heart Words
+let heartsLeft = 5;
+function moveToHeart(el) {
+  const target = document.getElementById('heartTarget').getBoundingClientRect();
+  const r = el.getBoundingClientRect();
+  const dx = target.left + target.width/2 - (r.left + r.width/2);
+  const dy = target.top + target.height/2 - (r.top + r.height/2);
+  el.style.transform = `translate(${dx}px, ${dy}px) scale(0.2)`;
+  el.style.opacity = '0';
   setTimeout(() => {
-    p.innerHTML = '👩‍❤️‍👨<br><span style="font-size:10px; color:#fff;">Together!</span>';
-    document.getElementById('btnS8').classList.remove('btn-disabled');
-  }, 900);
+    el.remove();
+    heartsLeft--;
+    if(heartsLeft > 0) {
+      document.getElementById('heartTxt').innerText = heartsLeft + " tokens remaining";
+    } else {
+      document.getElementById('heartTxt').innerText = "All love collected!";
+      document.getElementById('btnS6').classList.remove('btn-disabled');
+    }
+  }, 300);
 }
 
-// 9. Candle Blow
-function blowCandle() {
-  document.getElementById('candleFlameBig').style.display = 'none';
-  document.getElementById('candleMsg').innerText = "✨ Wish made! May all your dreams come true! 🎉";
-  document.getElementById('btnS9').classList.remove('btn-disabled');
+// S7: Heart Catch Game
+let hCaught = 0;
+let fallingHearts = [];
+function initHeartCatch() {
+  const c = document.getElementById('heartCanvas');
+  const ctx = c.getContext('2d');
+  hCaught = 0;
+  fallingHearts = [];
+  for(let i=0; i<5; i++) {
+    fallingHearts.push({ x: 30 + Math.random()*240, y: 25 + Math.random()*130, r: 16 });
+  }
+  function draw() {
+    ctx.clearRect(0,0,c.width,c.height);
+    fallingHearts.forEach(h => {
+      ctx.fillStyle = '#f72585';
+      ctx.beginPath();
+      ctx.arc(h.x, h.y, h.r, 0, Math.PI*2);
+      ctx.fill();
+      ctx.fillStyle = '#fff';
+      ctx.font = '10px sans-serif';
+      ctx.fillText('HEART', h.x - 16, h.y + 3);
+    });
+  }
+  draw();
+  c.onclick = function(e) {
+    const rect = c.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    fallingHearts = fallingHearts.filter(h => {
+      if(Math.hypot(h.x - x, h.y - y) < h.r + 8) {
+        hCaught++;
+        document.getElementById('hScore').innerText = "Hearts Caught: " + hCaught + " / 5";
+        if(hCaught >= 5) document.getElementById('btnS7').classList.remove('btn-disabled');
+        return false;
+      }
+      return true;
+    });
+    draw();
+  };
 }
-</script>
-</body>
-</html>
+
+// S8: 4-Frame Mario Runner
+let mx = 20, my = 140, mJ = false, mF = 0;
+function initMario() {
+  const c = document.getElementById('marioCanvas');
+  const ctx = c.getContext('2d');
+  function drawMario() {
+    ctx.clearRect(0,0,c.width,c.height);
+    // Ground
+    ctx.fillStyle = '#1b4332';
+    ctx.fillRect(0, 160, c.width, 30);
+    // Goal
+    ctx.fillStyle = '#d90429';
+    ctx.fillRect(250, 120, 25, 40);
+    ctx.fillStyle = '#fff';
+    ctx.font = '9px sans-serif';
+    ctx.fillText('ZEENAT', 245, 114);
+    // Character Frame
+    ctx.fillStyle = '#48cae4';
+    ctx.fillRect(mx, my - 20, 12, 20); // body
+    ctx.fillStyle = '#ffd166';
+    ctx.fillRect(mx + 1, my - 30, 10, 10); // head
+    ctx.fillStyle = '#fff';
+    if(mF === 0) { ctx.fillRect(mx, my, 4, 10); ctx.fillRect(mx + 8, my, 4, 10); }
+    else if(mF === 1) { ctx.fillRect(mx - 2, my, 4, 8); ctx.fillRect(mx + 8, my, 4, 12); }
+    else if(mF === 2) { ctx.fillRect(mx + 2, my, 4, 10); ctx.fillRect(mx + 6, my, 4, 10); }
+    else { ctx.fillRect(mx - 2, my, 4, 12); ctx.fillRect(mx + 8, my, 4, 8); }
+  }
+  drawMario();
+  window.drawMario = drawMario;
+}
+function mJump() {
+  if(mJ) return;
+  mJ = true;
+  my = 95;
+  window.drawMario();
+  setTimeout(() => { my = 140; mJ = false; 
