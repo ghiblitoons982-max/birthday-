@@ -3,320 +3,381 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Happy Birthday Zeenat 💖</title>
+<title>Happy Birthday Zeenat</title>
 <style>
-  * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
-  body { font-family: sans-serif; background: #000; overflow: hidden; width: 100vw; height: 100vh; color: #fff; }
-  .screen { display: none; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; overflow-y: auto; }
-  .active { display: flex; }
-  .btn-main { background: #ff4081; color: #fff; border: none; border-radius: 25px; padding: 12px 24px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 15px; }
-  .btn-disabled { opacity: 0.35; pointer-events: none; }
-  .card { background: rgba(255,255,255,0.95); border-radius: 18px; padding: 20px; width: 90%; max-width: 320px; color: #333; }
-  .in-pass { width: 100%; padding: 10px; border: 2px solid #ff4081; border-radius: 10px; font-size: 16px; text-align: center; margin: 10px 0; outline: none; }
-  .quiz-opt { background: #311b92; color: #fff; padding: 10px; border-radius: 10px; margin: 8px 0; cursor: pointer; }
-  .opt-c { background: #00c853 !important; }
-  .opt-w { background: #d50000 !important; }
-  .tray { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 300px; margin-top: 15px; }
-  .tok { background: #1e88e5; color: #fff; padding: 8px 14px; border-radius: 16px; font-size: 13px; font-weight: bold; cursor: pointer; }
-  .box-d { background: #fff; border: 2px dashed #f48fb1; border-radius: 14px; width: 90%; max-width: 320px; height: 260px; overflow-y: scroll; padding: 15px; text-align: left; color: #4a148c; font-size: 14px; line-height: 1.5; }
-  .map-box { position: relative; width: 90%; max-width: 300px; height: 280px; background: #e0f2fe; border-radius: 14px; overflow: hidden; margin: 10px auto; }
-  .pin { position: absolute; font-size: 32px; transition: all 1s ease; cursor: pointer; }
-  .cvs { border: 2px solid #ff4081; border-radius: 10px; background: #05010e; width: 90%; max-width: 300px; height: 200px; }
+  * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+  body { background: #07000d; color: #fff; height: 100vh; width: 100vw; overflow: hidden; display: flex; justify-content: center; align-items: center; }
+
+  .screen { display: none; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; overflow-y: auto; }
+  .screen.active { display: flex; animation: slideIn 0.4s ease-out forwards; }
+  @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+  .btn { margin-top: 18px; background: linear-gradient(135deg, #ff3366, #ff6b8b); color: #fff; border: none; padding: 13px 30px; border-radius: 28px; font-size: 15px; font-weight: 600; cursor: pointer; box-shadow: 0 8px 20px rgba(255,51,102,0.35); transition: 0.2s; z-index: 10; }
+  .btn:disabled { opacity: 0.35; pointer-events: none; }
+  .btn.pulse { animation: btnPulse 1.5s infinite; }
+  @keyframes btnPulse { 0%, 100% { transform: scale(1); box-shadow: 0 0 15px #ff3366; } 50% { transform: scale(1.04); box-shadow: 0 0 25px #ff6b8b; } }
+
+  .tag { background: rgba(255, 51, 102, 0.15); border: 1px solid rgba(255, 51, 102, 0.4); color: #ff8fab; padding: 6px 14px; border-radius: 16px; font-size: 12px; margin-bottom: 14px; font-weight: 600; }
+  .bg-anim { position: absolute; width: 100%; height: 100%; top: 0; left: 0; pointer-events: none; overflow: hidden; z-index: 0; }
+
+  /* 1. LOCK SCREEN */
+  #s1 { background: radial-gradient(circle, #260533 0%, #07000d 100%); }
+  .v-heart { position: absolute; bottom: -40px; animation: floatHeart 6s linear infinite; }
+  @keyframes floatHeart { 0% { transform: translateY(0) scale(0.6); opacity: 0.8; } 100% { transform: translateY(-110vh); opacity: 0; } }
+  .card-glass { position: relative; z-index: 2; background: rgba(255,255,255,0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.12); padding: 32px 24px; border-radius: 24px; width: 100%; max-width: 320px; }
+  .input-pass { width: 85%; padding: 13px; margin: 18px 0; border-radius: 20px; border: 1.5px solid #ff3366; background: rgba(0,0,0,0.5); color: #fff; text-align: center; font-size: 16px; outline: none; }
+
+  /* 2. CAKE SLICE */
+  #s2 { background: linear-gradient(180deg, #fff4e6 0%, #ffd8a8 100%); color: #3d2206; }
+  .cake-box { width: 160px; height: 130px; margin: 15px auto; cursor: pointer; }
+
+  /* 3. POLAROID SCRAPBOOK */
+  #s3 { background: #f1f5f9; color: #0f172a; }
+  .polaroid-card { background: #fff; padding: 12px 12px 22px 12px; border-radius: 8px; box-shadow: 0 12px 30px rgba(0,0,0,0.15); width: 280px; transform: rotate(-2deg); cursor: pointer; }
+  .polaroid-img { width: 100%; height: 260px; object-fit: cover; border-radius: 4px; background: #e2e8f0; }
+
+  /* 4. DIARY LETTERS (SCROLL-LOCK) */
+  #s4 { background: #fff5f7; color: #5c0d23; position: relative; }
+  .sakura-petal { position: absolute; background: #ffb7c5; border-radius: 100% 0% 100% 0%; opacity: 0.7; animation: fallSakura 7s linear infinite; pointer-events: none; }
+  @keyframes fallSakura { 0% { transform: translate(0, -20px) rotate(0deg); } 100% { transform: translate(120px, 105vh) rotate(360deg); } }
+  .diary-view { background: #fff; border: 1.5px solid #fecdd3; border-radius: 20px; width: 90%; max-width: 340px; height: 320px; padding: 22px; overflow-y: scroll; text-align: left; box-shadow: 0 8px 24px rgba(244,63,94,0.08); z-index: 2; }
+
+  /* 5. DUSTBIN CLEAR TENSIONS */
+  #s5 { background: #e0f2fe; color: #0369a1; }
+  .bin-icon { width: 75px; height: 85px; margin: 15px auto; cursor: pointer; }
+  .bin-icon.shake { animation: binShake 0.3s; }
+  @keyframes binShake { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15) rotate(6deg); } }
+  .token-wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 320px; }
+  .token-item { background: #fff; padding: 8px 16px; border-radius: 20px; border: 1px solid #bae6fd; font-size: 13px; font-weight: 600; cursor: pointer; color: #0284c7; }
+
+  /* 6. CAT SHOOTER GAME */
+  #s6 { background: #070014; }
+  #shooterCanvas { background: radial-gradient(circle at center, #1b0738 0%, #060012 100%); border: 2px solid #a855f7; border-radius: 16px; width: 95%; max-width: 330px; height: 360px; }
+
+  /* 7. MARIO 2D MINI GAME */
+  #s7 { background: #5c94fc; color: #fff; }
+  #marioCanvas { background: #5c94fc; border: 3px solid #000; border-radius: 12px; width: 95%; max-width: 340px; height: 240px; }
+  .game-pad { display: flex; justify-content: space-between; width: 95%; max-width: 340px; margin-top: 10px; }
+  .pad-btn { background: #dc2626; color: #fff; border: 2px solid #000; padding: 10px 20px; font-weight: bold; border-radius: 10px; box-shadow: 0 4px #000; }
+
+  /* 8. MAP DISTANCE */
+  #s8 { background: #0f172a; }
+  .map-box { width: 90%; max-width: 340px; height: 320px; border-radius: 20px; border: 2px solid #ff3366; background: #1e293b; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; }
+  .doll-node { width: 60px; height: 70px; cursor: pointer; transition: 0.8s ease; }
+
+  /* 9. CANDLE BLOW */
+  #s9 { background: #000; color: #fff; }
+  .flame { width: 16px; height: 26px; background: #fbbf24; border-radius: 50% 50% 20% 20%; margin: 0 auto; box-shadow: 0 0 25px #f59e0b; animation: flicker 0.2s infinite alternate; }
+  @keyframes flicker { from { transform: scale(1); } to { transform: scale(0.92); } }
+
+  /* 10. REEL FEED WITH I LOVE YOU */
+  #s10 { background: #000; }
+  .feed-container { width: 100%; max-width: 320px; height: 460px; overflow-y: scroll; scroll-snap-type: y mandatory; border-radius: 20px; border: 2px solid #ff3366; }
+  .feed-item { width: 100%; height: 100%; scroll-snap-align: start; position: relative; display: flex; justify-content: center; align-items: center; background: #111; }
+  .feed-media { width: 100%; height: 100%; object-fit: cover; }
+  .feed-end-text { font-size: 26px; font-weight: 800; color: #ff3366; text-shadow: 0 0 15px #ff3366; }
+
+  /* 11. SPECIAL EDITS */
+  #s11 { background: #000; }
+  .video-frame { width: 90%; max-width: 310px; height: 430px; border-radius: 20px; border: 2px solid #ff3366; object-fit: cover; background: #111; }
 </style>
 </head>
 <body>
 
-<!-- 1. Password -->
-<div id="p1" class="screen active">
-  <div class="card">
-    <h2 style="color:#c2185b;">Secret Portal 🔐</h2>
-    <input type="password" id="pass" class="in-pass" placeholder="Enter Password">
-    <button class="btn-main" id="bUn">Unlock Surprise ✨</button>
+<audio id="bgSong" src="bg-music.mp3" loop></audio>
+
+<!-- 1. LOCK SCREEN -->
+<div class="screen active" id="s1">
+  <div class="bg-anim" id="p1Hearts"></div>
+  <div class="card-glass">
+    <svg style="width:42px; height:42px; fill:#ff3366; margin-bottom:12px;" viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+    <h2>Happy Birthday Zeenat</h2>
+    <p style="font-size: 13px; opacity: 0.75; margin-top: 6px;">Enter your secret password</p>
+    <input type="password" id="passInput" class="input-pass" placeholder="Password">
+    <button class="btn pulse" onclick="unlockSite()">Unlock ✨</button>
   </div>
 </div>
 
-<!-- 2. Cake Cut -->
-<div id="p2" class="screen" style="background:#ffe0b2; color:#333;">
-  <h2 style="color:#e65100;">Cut Birthday Cake! 🎂</h2>
-  <div id="cake" style="font-size:80px; margin:20px 0; cursor:pointer;">🎂</div>
-  <p id="cMsg" style="font-weight:bold;">Tap cake to cut a slice!</p>
-  <button id="bC" class="btn-main btn-disabled">Next: Memories ➜</button>
-</div>
-
-<!-- 3. Photo Memories -->
-<div id="p3" class="screen" style="background:#0d2040;">
-  <h3>Our Memories 📸</h3>
-  <div class="card" id="memCard" style="margin:15px auto; height:260px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
-    <span style="font-size:50px;">💖</span>
-    <p id="cap" style="margin-top:15px; font-weight:bold; color:#1b3b6f;">Memory 1: Beautiful moments with you!</p>
+<!-- 2. CAKE SLICE -->
+<div class="screen" id="s2">
+  <span class="tag">Celebrate</span>
+  <h2>Cut the Birthday Cake</h2>
+  <div class="cake-box" onclick="cutCakeAction()">
+    <svg viewBox="0 0 100 80" style="width:100%; height:100%;">
+      <ellipse cx="50" cy="65" rx="40" ry="12" fill="#d97706"/>
+      <path d="M10 40 Q50 50 90 40 L90 65 Q50 75 10 65 Z" fill="#fbbf24"/>
+      <ellipse cx="50" cy="40" rx="40" ry="12" fill="#f43f5e"/>
+      <path id="slice" d="M50 40 L90 40 Q50 50 50 40 Z" fill="#be123c" style="transition:0.4s;"/>
+      <rect x="48" y="16" width="4" height="14" fill="#60a5fa"/>
+      <ellipse id="cakeFlame" cx="50" cy="12" rx="4" ry="7" fill="#fbbf24"/>
+    </svg>
   </div>
-  <p style="font-size:12px; color:#aaa;">(Tap box to switch photo)</p>
-  <button id="bP3" class="btn-main btn-disabled">Read Letters ➜</button>
+  <button class="btn" id="btnS2" disabled onclick="goto(3)">Next: Memories ➔</button>
 </div>
 
-<!-- 4. Letters Diary -->
-<div id="p4" class="screen" style="background:#fce4ec; color:#333;">
-  <h2 style="color:#880e4f; margin-bottom:10px;">Letters for You 💌</h2>
-  <div class="box-d" id="dBox">
-    <h3 id="lTitle" style="color:#d81b60; margin-bottom:8px;">Letter #1 🌸</h3>
-    <p id="lTxt">Dear Zeenat, on your birthday, I want to remind you how special you are to me. You bring peace and joy into my life every day! 💖</p>
+<!-- 3. POLAROID SCRAPBOOK -->
+<div class="screen" id="s3">
+  <span class="tag">Memories (Tap Photo to View)</span>
+  <h2>Polaroid Gallery</h2>
+  <div class="polaroid-card" id="pCard" onclick="nextPhoto()">
+    <img id="pImg" class="polaroid-img" src="photo1.jpg" alt="Memory">
+    <p id="pTxt" style="margin-top: 10px; font-weight: 600;">The sweetest smile ✨</p>
   </div>
-  <button id="bL" class="btn-main">Next Letter ➜</button>
+  <button class="btn" id="btnS3" disabled onclick="goto(4)">Next: Diary ➔</button>
 </div>
 
-<!-- 5. Quiz -->
-<div id="p5" class="screen" style="background:#0a0014;">
-  <div class="card" style="background:#1a0033; color:#fff; border:2px solid #b388ff;">
-    <h3>Q1: Who loves who the most?</h3>
-    <div class="quiz-opt" onclick="runQuiz(this, 1)">Samar loves Zeenat infinitely ❤️</div>
-    <div class="quiz-opt" onclick="runQuiz(this, 0)">Both equally</div>
-    <div class="quiz-opt" onclick="runQuiz(this, 0)">It is a secret 🤫</div>
-    <div class="quiz-opt" onclick="runQuiz(this, 0)">Zeenat loves Samar more</div>
+<!-- 4. DIARY LETTERS -->
+<div class="screen" id="s4">
+  <div class="bg-anim" id="sakuraContainer"></div>
+  <span class="tag" style="background:#ffe4e6; color:#be123c;">Letter <span id="lNum">1</span> / 10</span>
+  <h2>Diary For Zeenat</h2>
+  <div class="diary-view" id="dBox" onscroll="onDiaryScroll()">
+    <p id="lTxt" style="line-height: 1.8; font-size: 14px;"></p>
   </div>
-  <button id="bQ" class="btn-main btn-disabled">Clear Tensions ➜</button>
+  <button class="btn" id="btnNextL" disabled onclick="advanceLetter()">Read Next Letter ➔</button>
 </div>
 
-<!-- 6. Dustbin -->
-<div id="p6" class="screen" style="background:#bbdefb; color:#333;">
-  <h2 style="color:#0d47a1;">Dump All Problems 🗑️</h2>
-  <div style="font-size:60px; margin:10px 0;">🗑️</div>
-  <p style="font-size:13px; color:#1565c0;">Tap each problem to throw in bin!</p>
-  <div class="tray" id="tTray">
-    <div class="tok" onclick="delTok(this)">Tension</div>
-    <div class="tok" onclick="delTok(this)">Problem</div>
-    <div class="tok" onclick="delTok(this)">BF Problem</div>
-    <div class="tok" onclick="delTok(this)">Mom Problem</div>
-    <div class="tok" onclick="delTok(this)">Stress</div>
+<!-- 5. DUSTBIN CLEAR TENSIONS -->
+<div class="screen" id="s5">
+  <span class="tag">Stress Free Zone</span>
+  <h2>Trash All Tensions</h2>
+  <div class="bin-icon" id="binBox" onclick="shakeBin()">
+    <svg viewBox="0 0 24 24" style="width:100%; height:100%; fill:#0284c7;"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
   </div>
-  <button id="bBin" class="btn-main btn-disabled">Play Cat Game ➜</button>
+  <div class="token-wrap" id="tokensBox"></div>
+  <button class="btn" id="btnS5" disabled onclick="goto(6)">All Clear ➔</button>
 </div>
 
-<!-- 7. Cat Shooter -->
-<div id="p7" class="screen">
-  <h3 style="color:#e1bee7; margin-bottom:8px;">Blast The Stress! 🐱</h3>
-  <canvas id="cCanvas" class="cvs" width="300" height="200"></canvas>
-  <p id="cScore" style="margin-top:8px; font-size:14px;">Destroyed: 0 / 5</p>
-  <button id="bCat" class="btn-main btn-disabled">Mario Mini Game ➜</button>
+<!-- 6. RETRO CAT SHOOTER -->
+<div class="screen" id="s6">
+  <span class="tag">Cat Space Arcade</span>
+  <p style="font-size: 12px; margin-bottom: 8px; opacity: 0.8;">Touch screen left/right to shoot negative thoughts</p>
+  <canvas id="shooterCanvas"></canvas>
+  <button class="btn" id="btnS6" disabled onclick="goto(7)">Next Level ➔</button>
 </div>
 
-<!-- 8. Mario Adventure -->
-<div id="p8" class="screen" style="background:#5c94fc;">
-  <h3 style="font-family:monospace; margin-bottom:8px;">MARIO ADVENTURE 🍄</h3>
-  <canvas id="mCanvas" class="cvs" style="background:#5c94fc;" width="300" height="180"></canvas>
-  <div style="display:flex; gap:15px; margin-top:10px;">
-    <button class="btn-main" style="background:#fff; color:#000;" id="mJmp">⬆ Jump</button>
-    <button class="btn-main" style="background:#fff; color:#000;" id="mRgt">▶ Move</button>
-  </div>
-  <button id="bMar" class="btn-main btn-disabled">See Distance ➜</button>
-</div>
-
-<!-- 9. Delhi to Bijnor Map -->
-<div id="p9" class="screen" style="background:#eceff1; color:#333;">
-  <h3>Delhi to Bijnor (161 KM) 📍</h3>
-  <div class="map-box">
-    <div id="pS" class="pin" style="bottom:15px; left:15px;" onclick="meet()">👦</div>
-    <div id="pZ" class="pin" style="top:15px; right:15px;" onclick="meet()">👧</div>
-  </div>
-  <p style="font-size:12px; color:#666;">(Tap character to meet)</p>
-  <button id="bMap" class="btn-main btn-disabled">Collect Hearts ➜</button>
-</div>
-
-<!-- 10. Night Sky Hearts -->
-<div id="p10" class="screen" style="background:#0f172a;">
-  <h2>Drop Words into Heart 💖</h2>
-  <div id="cHeart" style="font-size:60px; margin:15px 0;">💖</div>
-  <div class="tray">
-    <div class="tok" onclick="delH(this)">Samar</div>
-    <div class="tok" onclick="delH(this)">Muezza</div>
-    <div class="tok" onclick="delH(this)">Bunny</div>
-    <div class="tok" onclick="delH(this)">Forever</div>
-  </div>
-  <button id="bH" class="btn-main btn-disabled">Make a Wish ➜</button>
-</div>
-
-<!-- 11. Matchstick Candle -->
-<div id="p11" class="screen" style="background:#121212;">
-  <h2>Light Your Candle 🕯️</h2>
-  <div id="cnd" style="font-size:60px; margin:20px 0;">🕯️</div>
-  <div id="mStk" style="font-size:45px; cursor:pointer;" onclick="lightCnd()">🔥🥢</div>
-  <button id="bCnd" class="btn-main btn-disabled">Watch Reel ➜</button>
-</div>
-
-<!-- 12. Vertical Reel -->
-<div id="p12" class="screen">
-  <div class="card" style="background:#222; color:#fff; height:320px; display:flex; align-items:center; justify-content:center;">
-    🎬 Reel Feed Video / Photo
-  </div>
-  <button id="bP12" class="btn-main">Video Edits ➜</button>
-</div>
-
-<!-- 13. Video Edits -->
-<div id="p13" class="screen" style="background:#f8bbd0; color:#333;">
-  <h2 style="color:#c2185b; margin-bottom:10px;">Cute Video Edits 🎬</h2>
-  <div class="card" style="background:#000; color:#fff; height:280px; display:flex; align-items:center; justify-content:center;">
-    🎬 Custom Video Edit
-  </div>
-  <button id="bP13" class="btn-main">Voice Notes ➜</button>
-</div>
-
-<!-- 14. Voice Player -->
-<div id="p14" class="screen" style="background:#f48fb1; color:#333;">
-  <div class="card" style="background:#4a2835; color:#fff;">
-    <h3>Zeenat Birthday Gift 🎀</h3>
-    <div id="vnBdg" style="background:#ff4081; padding:4px 10px; border-radius:12px; margin:15px auto; width:120px; font-size:13px;">5 Remaining</div>
-    <div style="font-size:24px; display:flex; justify-content:space-around; margin-top:10px; cursor:pointer;">
-      <span onclick="alert('Playing Voice Note 🎵')">⏯ Play</span>
-      <span onclick="nextVN()">⏭ Next</span>
+<!-- 7. MARIO 2D MINI GAME -->
+<div class="screen" id="s7">
+  <span class="tag">Zeenat's Mini Adventure</span>
+  <canvas id="marioCanvas"></canvas>
+  <div class="game-pad">
+    <button class="pad-btn" ontouchstart="marioJump()" onclick="marioJump()">JUMP</button>
+    <div>
+      <button class="pad-btn" ontouchstart="marioLeft()" onclick="marioLeft()">LEFT</button>
+      <button class="pad-btn" ontouchstart="marioRight()" onclick="marioRight()">RIGHT</button>
     </div>
+  </div>
+  <button class="btn" id="btnS7" disabled style="margin-top:10px;" onclick="goto(8)">Clear ➔</button>
+</div>
+
+<!-- 8. MAP DISTANCE -->
+<div class="screen" id="s8">
+  <span class="tag">Delhi to Bijnor</span>
+  <h2>161 KM is Nothing</h2>
+  <p style="font-size: 12px; margin-bottom: 12px; opacity: 0.8;">Tap the dolls to bring them close</p>
+  <div class="map-box" onclick="meetTogether()">
+    <div class="doll-node" id="dSamar">
+      <svg viewBox="0 0 100 120" style="width:100%; height:100%;">
+        <circle cx="50" cy="35" r="25" fill="#fcd34d"/><circle cx="42" cy="35" r="3" fill="#000"/><circle cx="58" cy="35" r="3" fill="#000"/>
+        <rect x="35" y="60" width="30" height="40" rx="6" fill="#3b82f6"/>
+      </svg>
+    </div>
+    <div class="doll-node" id="dZeenat">
+      <svg viewBox="0 0 100 120" style="width:100%; height:100%;">
+        <circle cx="50" cy="35" r="25" fill="#fcd34d"/><circle cx="42" cy="35" r="3" fill="#000"/><circle cx="58" cy="35" r="3" fill="#000"/>
+        <path d="M35 60 L65 60 L75 100 L25 100 Z" fill="#ec4899"/>
+      </svg>
+    </div>
+  </div>
+  <p id="mapMsg" style="display:none; margin-top:15px; color:#ff8fab; font-weight:600;">Distance means so little when someone means so much.</p>
+  <button class="btn" id="btnS8" disabled onclick="goto(9)">Next ➔</button>
+</div>
+
+<!-- 9. CANDLE BLOW -->
+<div class="screen" id="s9">
+  <span class="tag">Make A Wish</span>
+  <h2>Blow The Candle</h2>
+  <div style="width:40px; height:90px; margin:30px auto; cursor:pointer;" onclick="blowOut()">
+    <div class="flame" id="cFlame"></div>
+    <div style="width:4px; height:12px; background:#555; margin:0 auto;"></div>
+    <div style="width:36px; height:60px; background:#f43f5e; border-radius:4px; margin:0 auto;"></div>
+  </div>
+  <p id="wishMsg" style="display:none; color:#fef08a; font-size:14px; margin-top:15px;">May all your pure wishes turn into reality. ✨</p>
+  <button class="btn" id="btnS9" disabled onclick="goto(10)">Next: Short Reels ➔</button>
+</div>
+
+<!-- 10. REEL FEED -->
+<div class="screen" id="s10">
+  <span class="tag">Reel Feed (Scroll Down)</span>
+  <div class="feed-container" id="feedScrollBox" onscroll="checkFeedEnd()">
+    <div class="feed-item"><video class="feed-media" src="feed-vid1.mp4" playsinline controls></video></div>
+    <div class="feed-item"><img class="feed-media" src="feed1.jpg"></div>
+    <div class="feed-item"><video class="feed-media" src="feed-vid2.mp4" playsinline controls></video></div>
+    <div class="feed-item"><img class="feed-media" src="feed2.jpg"></div>
+    <div class="feed-item"><video class="feed-media" src="feed-vid3.mp4" playsinline controls></video></div>
+    <div class="feed-item"><img class="feed-media" src="feed3.jpg"></div>
+    <div class="feed-item"><video class="feed-media" src="feed-vid4.mp4" playsinline controls></video></div>
+    <div class="feed-item"><img class="feed-media" src="feed4.jpg"></div>
+    <div class="feed-item"><video class="feed-media" src="feed-vid5.mp4" playsinline controls></video></div>
+    <div class="feed-item"><img class="feed-media" src="feed5.jpg"></div>
+    <div class="feed-item" style="flex-direction: column;">
+      <div class="feed-end-text">I LOVE YOU 💖</div>
+    </div>
+  </div>
+  <button class="btn" id="btnS10" disabled onclick="goto(11)">Next: Special Edit ➔</button>
+</div>
+
+<!-- 11. SPECIAL EDIT (FINAL PAGE) -->
+<div class="screen" id="s11">
+  <span class="tag">Special Birthday Edit</span>
+  <video id="vPlayer" class="video-frame" src="edit1.mp4" playsinline controls></video>
+  <div style="margin-top:15px;">
+    <h2>Happy Birthday Zeenat! 💖</h2>
+    <p style="font-size:13px; margin-top:5px; opacity:0.85;">Have the happiest and sweetest year ahead!</p>
   </div>
 </div>
 
 <script>
-var curPage = 'p1';
-function nav(id) {
-  var s = document.querySelectorAll('.screen');
-  for (var i = 0; i < s.length; i++) s[i].classList.remove('active');
-  document.getElementById(id).classList.add('active');
-  if (id === 'p7') runCat();
-  if (id === 'p8') runMar();
-}
-
-document.getElementById('bUn').onclick = function() {
-  if (document.getElementById('pass').value.trim() !== '') nav('p2');
-};
-
-document.getElementById('cake').onclick = function() {
-  this.innerText = '🍰';
-  document.getElementById('cMsg').innerText = 'I Love You Zeenat 💖';
-  document.getElementById('bC').classList.remove('btn-disabled');
-};
-document.getElementById('bC').onclick = function() { nav('p3'); };
-
-var mI = 0;
-var mems = ['Memory 1: Beautiful moments!', 'Memory 2: Late night talks! 🥰', 'Memory 3: All our smiles! 💖', 'Memory 4: Forever together! 👩‍❤️‍💋‍👨'];
-document.getElementById('memCard').onclick = function() {
-  if (mI < mems.length - 1) {
-    mI++;
-    document.getElementById('cap').innerText = mems[mI];
-    if (mI >= mems.length - 1) document.getElementById('bP3').classList.remove('btn-disabled');
+  function goto(num) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById('s' + num).classList.add('active');
+    if(num === 6) initShooterGame();
+    if(num === 7) initMarioGame();
   }
-};
-document.getElementById('bP3').onclick = function() { nav('p4'); };
-
-var lI = 1;
-document.getElementById('bL').onclick = function() {
-  if (lI < 10) {
-    lI++;
-    document.getElementById('lTitle').innerText = 'Letter #' + lI + ' 🌸';
-    document.getElementById('lTxt').innerText = 'Letter ' + lI + ' content: You mean the world to me Zeenat. Always yours! 💖';
-    if (lI === 10) this.innerText = 'Go to Quiz ➜';
-  } else {
-    nav('p5');
+  function enable(id) {
+    const b = document.getElementById(id);
+    if(b) { b.disabled = false; b.classList.add('pulse'); }
   }
-};
 
-function runQuiz(el, ok) {
-  if (ok === 1) {
-    el.classList.add('opt-c');
-    document.getElementById('bQ').classList.remove('btn-disabled');
-  } else {
-    el.classList.add('opt-w');
+  // Floating Hearts
+  const hCont = document.getElementById('p1Hearts');
+  for(let i=0; i<12; i++) {
+    const el = document.createElement('div');
+    el.className = 'v-heart';
+    el.innerHTML = '<svg width="22" height="22" fill="rgba(255,51,102,0.4)" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>';
+    el.style.left = Math.random() * 90 + 'vw';
+    el.style.animationDelay = Math.random() * 4 + 's';
+    el.style.animationDuration = (4 + Math.random() * 3) + 's';
+    hCont.appendChild(el);
   }
-}
-document.getElementById('bQ').onclick = function() { nav('p6'); };
 
-var tK = 0;
-function delTok(el) {
-  el.style.display = 'none';
-  tK++;
-  if (tK >= 4) document.getElementById('bBin').classList.remove('btn-disabled');
-}
-document.getElementById('bBin').onclick = function() { nav('p7'); };
+  // Floating Sakura
+  const sCont = document.getElementById('sakuraContainer');
+  for(let i=0; i<15; i++) {
+    const p = document.createElement('div');
+    p.className = 'sakura-petal';
+    const sz = (10 + Math.random() * 8) + 'px';
+    p.style.width = sz; p.style.height = sz;
+    p.style.left = Math.random() * 95 + 'vw';
+    p.style.animationDelay = Math.random() * 5 + 's';
+    p.style.animationDuration = (5 + Math.random() * 4) + 's';
+    sCont.appendChild(p);
+  }
 
-function runCat() {
-  var cvs = document.getElementById('cCanvas');
-  var ctx = cvs.getContext('2d');
-  var sc = 0, y = 10;
-  function loop() {
-    ctx.clearRect(0,0,300,200);
-    ctx.fillStyle = '#ff4081'; ctx.fillText('🐱 Cat Laser', 110, 180);
-    ctx.fillStyle = '#ff5252'; ctx.fillRect(100, y, 100, 18);
-    ctx.fillStyle = '#fff'; ctx.fillText('Stress / Anger', 110, y + 13);
-    y += 2.5;
-    if (y > 170) {
-      sc++; y = 10;
-      document.getElementById('cScore').innerText = 'Destroyed: ' + sc + ' / 5';
+  // 1. Password
+  function unlockSite() {
+    const v = document.getElementById('passInput').value.trim().toLowerCase();
+    if(v === 'zeenat' || v === '1234' || v === 'samar') {
+      document.getElementById('bgSong').play().catch(()=>{});
+      goto(2);
+    } else {
+      alert('Password wrong! (Hint: zeenat)');
     }
-    if (sc < 5) requestAnimationFrame(loop);
-    else document.getElementById('bCat').classList.remove('btn-disabled');
   }
-  loop();
-}
-document.getElementById('bCat').onclick = function() { nav('p8'); };
 
-var mX = 20, mY = 130, mVY = 0, jmp = false;
-function runMar() {
-  var cvs = document.getElementById('mCanvas');
-  var ctx = cvs.getContext('2d');
-  function loop() {
-    if (jmp) {
-      mY += mVY; mVY += 0.5;
-      if (mY >= 130) { mY = 130; jmp = false; }
+  // 2. Cake
+  let cCut = false;
+  function cutCakeAction() {
+    if(cCut) return;
+    cCut = true;
+    document.getElementById('slice').style.transform = 'translate(10px, -6px)';
+    document.getElementById('cakeFlame').style.display = 'none';
+    enable('btnS2');
+  }
+
+  // 3. Polaroid
+  let pi = 0;
+  const pData = [
+    { img: 'photo1.jpg', txt: 'The sweetest smile ✨' },
+    { img: 'photo2.jpg', txt: 'Special moments together 💕' },
+    { img: 'photo3.jpg', txt: 'My favorite person forever 🌸' },
+    { img: 'photo4.jpg', txt: 'Happy Birthday Zeenat! 🎂' }
+  ];
+  function nextPhoto() {
+    pi++;
+    if(pi < pData.length) {
+      document.getElementById('pImg').src = pData[pi].img;
+      document.getElementById('pTxt').innerText = pData[pi].txt;
     }
-    ctx.clearRect(0,0,300,180);
-    ctx.fillStyle = '#c84c0c'; ctx.fillRect(0, 150, 300, 30);
-    ctx.fillStyle = '#ff4081'; ctx.beginPath(); ctx.arc(mX, mY, 10, 0, Math.PI * 2); ctx.fill();
-    ctx.fillStyle = '#fff'; ctx.fillText('🏠 Samar 🎂', 220, 120);
-    requestAnimationFrame(loop);
+    if(pi >= pData.length - 1) enable('btnS3');
   }
-  loop();
-}
-document.getElementById('mJmp').onclick = function() { if (!jmp) { mVY = -8; jmp = true; } };
-document.getElementById('mRgt').onclick = function() {
-  mX += 20;
-  if (mX >= 210) document.getElementById('bMar').classList.remove('btn-disabled');
-};
-document.getElementById('bMar').onclick = function() { nav('p9'); };
 
-function meet() {
-  document.getElementById('pS').style.bottom = '110px';
-  document.getElementById('pS').style.left = '110px';
-  document.getElementById('pZ').style.top = '110px';
-  document.getElementById('pZ').style.right = '110px';
-  setTimeout(function() {
-    alert('Distance means nothing when love is everything! 👩‍❤️‍💋‍👨');
-    document.getElementById('bMap').classList.remove('btn-disabled');
-  }, 1100);
-}
-document.getElementById('bMap').onclick = function() { nav('p10'); };
-
-var hC = 0;
-function delH(el) {
-  el.style.display = 'none';
-  hC++;
-  if (hC >= 3) document.getElementById('bH').classList.remove('btn-disabled');
-}
-document.getElementById('bH').onclick = function() { nav('p11'); };
-
-function lightCnd() {
-  document.getElementById('mStk').style.display = 'none';
-  document.getElementById('cnd').innerText = '🎂🔥';
-  document.getElementById('bCnd').classList.remove('btn-disabled');
-}
-document.getElementById('bCnd').onclick = function() { nav('p12'); };
-document.getElementById('bP12').onclick = function() { nav('p13'); };
-document.getElementById('bP13').onclick = function() { nav('p14'); };
-
-var vLeft = 5;
-function nextVN() {
-  if (vLeft > 1) {
-    vLeft--;
-    document.getElementById('vnBdg').innerText = vLeft + ' Remaining';
-  } else {
-    document.getElementById('vnBdg').innerText = 'All Done!';
-    alert('Happy Birthday Zeenat! 💖');
+  // 4. Letters (Scroll-Lock)
+  const letters = [
+    "Letter 1: Happy birthday to the one who makes everyday special. You bring so much peace and happiness into my life.",
+    "Letter 2: Thank you for always listening to my silly talks and for understanding me even when I say nothing.",
+    "Letter 3: Your smile is genuinely my favorite view in this whole wide world. Never let that fade.",
+    "Letter 4: I hope every single goal you set for yourself turns into reality this year.",
+    "Letter 5: Distance might be between Delhi and Bijnor, but you are always right here in my heart.",
+    "Letter 6: No matter how stressful life gets, having you by my side makes everything feel manageable.",
+    "Letter 7: You are kind, beautiful, hardworking, and truly one of a kind. Always remember your worth.",
+    "Letter 8: I promise to stand with you through every low and celebrate every high.",
+    "Letter 9: Thank you for being my safest home and the sweetest companion.",
+    "Letter 10: May this year be full of unconditional love, achievements, joy, and delicious treats! Happy Birthday!"
+  ];
+  let li = 0;
+  function showCurrentLetter() {
+    document.getElementById('lNum').innerText = li + 1;
+    document.getElementById('lTxt').innerText = letters[li];
+    const b = document.getElementById('btnNextL');
+    b.disabled = true; b.classList.remove('pulse');
+    document.getElementById('dBox').scrollTop = 0;
   }
-}
-</script>
-</body>
-</html>
+  showCurrentLetter();
+  function onDiaryScroll() {
+    const box = document.getElementById('dBox');
+    if(box.scrollTop + box.clientHeight >= box.scrollHeight - 10) enable('btnNextL');
+  }
+  function advanceLetter() {
+    li++;
+    if(li < letters.length) showCurrentLetter();
+    else goto(5);
+  }
+
+  // 5. Dustbin
+  const tokens = ['Tension', 'Problem', 'Periods Pain', 'Mom Problem', 'School', 'Loneliness', 'Overthinking'];
+  const tBox = document.getElementById('tokensBox');
+  tokens.forEach(t => {
+    const el = document.createElement('div');
+    el.className = 'token-item';
+    el.innerText = t;
+    el.onclick = () => {
+      el.style.display = 'none';
+      shakeBin();
+      if(Array.from(tBox.children).every(c => c.style.display === 'none')) enable('btnS5');
+    };
+    tBox.appendChild(el);
+  });
+  function shakeBin() {
+    const b = document.getElementById('binBox');
+    b.classList.add('shake');
+    setTimeout(() => b.classList.remove('shake'), 300);
+  }
+
+  // 6. Cat Space Shooter
+  function initShooterGame() {
+    const cvs = document.getElementById('shooterCanvas');
+    const ctx = cvs.getContext('2d');
+    cvs.width = 320; cvs.height = 360;
+    let catX = 140, score = 0, falling = [];
+    const targets = ['Tension', 'BF Problem', 'Cramps', 'Overthinking', 'Mood Swings', 'Stress', 'Bad Day', 'Worries', 'Anger', 'Doubts'];
+    let tIdx = 0;
+    function spawn() {
+      if(tIdx < targets.length) {
+        falling.push({ text: targets[tIdx], x: Math.random() * 180 + 20, y: -10, speed: 1.1 });
+        tIdx++;
+      }
+    }
+    spawn();
+    let intv = setInterval(() => {
+      ctx.clearRect(0, 0
