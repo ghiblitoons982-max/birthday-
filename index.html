@@ -8,62 +8,61 @@
 * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; -webkit-tap-highlight-color: transparent; }
 body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow: hidden; width: 100vw; height: 100vh; }
 .screen { display: none; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 15px; }
-.screen.active { display: flex; animation: fadeScene 0.4s ease-out forwards; }
-@keyframes fadeScene { from { opacity: 0; transform: scale(0.98); } to { opacity: 1; transform: scale(1); } }
+.screen.active { display: flex !important; }
 
 .btn { margin-top: 14px; background: linear-gradient(135deg, #ff2a6d, #9b5de5); color: #fff; border: none; padding: 12px 28px; font-size: 14px; font-weight: 700; border-radius: 25px; cursor: pointer; box-shadow: 0 4px 15px rgba(255, 42, 109, 0.4); z-index: 20; letter-spacing: 0.5px; }
-.btn-disabled { opacity: 0.3; pointer-events: none; }
+.btn-disabled { opacity: 0.35; pointer-events: none; }
 
-/* 1. Portal Theme (Deep Galaxy Violet) */
+/* S1: Portal */
 #s1 { background: radial-gradient(circle at center, #240046 0%, #0a0017 100%); }
 .portal-card { background: rgba(255, 255, 255, 0.08); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.15); border-radius: 18px; padding: 22px; width: 88%; max-width: 310px; }
 .portal-title { font-size: 19px; font-weight: 700; color: #ff70a6; margin-bottom: 6px; }
 .pass-box { width: 100%; padding: 12px; border-radius: 10px; border: 1.5px solid #ff70a6; background: rgba(0,0,0,0.5); color: #fff; outline: none; font-size: 16px; text-align: center; margin: 12px 0; }
-  
-/* 2. Cake Theme (Romantic Warm Maroon) */
+
+/* S2: Cake & Candle */
 #s2 { background: radial-gradient(circle at center, #3d0c1e 0%, #110006 100%); }
 .candle-src { width: 22px; height: 55px; background: #ff4d6d; border-radius: 4px; margin: 0 auto 20px; cursor: pointer; position: relative; border: 1.5px solid #fff; box-shadow: 0 0 10px #ff4d6d; }
 .flame { width: 14px; height: 22px; background: #ffbe0b; border-radius: 50% 50% 20% 20%; position: absolute; top: -20px; left: 3px; box-shadow: 0 0 14px #fb5607; animation: flick 0.12s infinite alternate; }
 @keyframes flick { from { transform: scale(1); } to { transform: scale(0.88); } }
 .cake-wrapper { width: 220px; height: 130px; position: relative; margin: 10px auto; cursor: pointer; }
-.cake-base { width: 190px; height: 80px; background: #590d22; border-radius: 14px 14px 8px 8px; position: absolute; bottom: 0; left: 15px; border-bottom: 5px solid #38040e; display: flex; align-items: center; justify-content: flex-start; padding-left: 20px; }
-.cake-slice { width: 85px; height: 80px; background: #c9184a; position: absolute; right: 15px; bottom: 0; border-radius: 0 14px 8px 0; transition: transform 0.6s ease; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 800; color: #fff; text-align: center; box-shadow: -2px 0 8px rgba(0,0,0,0.3); }
+.cake-base { width: 190px; height: 80px; background: #590d22; border-radius: 14px 14px 8px 8px; position: absolute; bottom: 0; left: 15px; border-bottom: 5px solid #38040e; display: flex; align-items: center; justify-content: flex-start; padding-left: 15px; }
+.cake-slice { width: 90px; height: 80px; background: #c9184a; position: absolute; right: 15px; bottom: 0; border-radius: 0 14px 8px 0; transition: transform 0.6s ease; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; color: #fff; text-align: center; }
 .cake-flame { display: none; width: 14px; height: 22px; background: #ffbe0b; border-radius: 50% 50% 20% 20%; position: absolute; top: 16px; left: 103px; box-shadow: 0 0 14px #fb5607; }
 
-/* 3. Frameless Photos Theme (Midnight Sapphire) */
+/* S3: Frameless Photos */
 #s3 { background: #03071e; padding: 0; }
 .frameless-container { width: 100vw; height: 75vh; position: relative; cursor: pointer; display: flex; align-items: center; justify-content: center; overflow: hidden; }
 .frameless-img { width: 100%; height: 100%; object-fit: contain; }
 .frameless-overlay { position: absolute; bottom: 20px; left: 0; width: 100%; text-align: center; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); padding: 20px 10px; font-size: 15px; font-weight: 600; color: #ffb703; }
 
-/* 4. Letters Diary (Vintage Rose) */
+/* S4: Diary */
 #s4 { background: radial-gradient(circle at center, #2b091f 0%, #0f010a 100%); }
 .diary-box { background: rgba(255,255,255,0.06); border: 1.5px dashed #ff758f; border-radius: 14px; width: 88%; max-width: 320px; height: 250px; overflow-y: scroll; padding: 16px; text-align: left; font-size: 14px; line-height: 1.6; color: #ffccd5; }
 
-/* 5. Dustbin Moveable Words (Ocean Depth) */
+/* S5: Dustbin */
 #s5 { background: radial-gradient(circle at center, #001f3f 0%, #000814 100%); }
 .bin-zone { width: 85px; height: 85px; border: 2px dashed #00b4d8; border-radius: 16px; margin: 12px auto; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #90e0ef; font-weight: bold; background: rgba(0, 180, 216, 0.08); }
 .moveable-tray { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 320px; margin-top: 12px; }
 .move-tok { background: rgba(255,255,255,0.08); border: 1.5px solid #00b4d8; color: #caf0f8; padding: 8px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
-/* 6. Heart Moveable Tokens (Velvet Love) */
+/* S6: Hearts Collection */
 #s6 { background: radial-gradient(circle at center, #3a0ca3 0%, #050114 100%); }
 .heart-collector { width: 90px; height: 90px; border: 2px dashed #f72585; border-radius: 50%; margin: 12px auto; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #f72585; font-weight: bold; background: rgba(247, 37, 133, 0.08); }
 .heart-tok { background: rgba(247, 37, 133, 0.15); border: 1.5px solid #f72585; color: #ffb3c6; padding: 8px 14px; border-radius: 20px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
 
-/* 7. Canvas Heart Catch Game (Cyber Neon) */
+/* S7: Game Canvas */
 #s7 { background: #080112; }
 .game-canvas { border: 1.5px solid #f72585; border-radius: 14px; background: #000; width: 90%; max-width: 320px; height: 210px; }
 
-/* 8. 4-Frame Mario Runner (Classic Retro Night) */
+/* S8: Mario Runner */
 #s8 { background: #0d1b2a; }
 
-/* 9. Delhi to Bijnor Map (Dark Blueprint) */
+/* S9: Map */
 #s9 { background: #03071e; }
 .map-route { position: relative; width: 88%; max-width: 320px; height: 250px; background: #0b132b; border: 1.5px solid #48cae4; border-radius: 14px; overflow: hidden; margin: 12px auto; }
 .point { position: absolute; padding: 6px 12px; background: #0077b6; border-radius: 20px; font-size: 12px; font-weight: bold; transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1); }
 
-/* 10. Auto Scroll Feed (Onyx Black) */
+/* S10: Feed */
 #s10 { background: #000; padding: 10px 0; }
 .feed-container { width: 92%; max-width: 330px; height: 82vh; overflow-y: scroll; border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 12px; }
 .feed-item { width: 100%; border-radius: 12px; margin-bottom: 14px; object-fit: cover; }
@@ -78,8 +77,8 @@ body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystem
   <div class="portal-card">
     <div class="portal-title">ZEENAT'S PORTAL</div>
     <div style="font-size:12px; color:#aaa; margin-bottom:8px;">Enter password to unlock</div>
-    <input type="text" id="passCode" class="pass-box" placeholder="Password: zeenu">
-    <button class="btn" onclick="checkAuth()">UNLOCK</button>
+    <input type="text" id="passCode" class="pass-box" placeholder="zeenu">
+    <button class="btn" id="unlockBtn" onclick="checkAuth()">UNLOCK</button>
   </div>
 </div>
 
@@ -92,7 +91,7 @@ body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystem
   <div class="cake-wrapper" onclick="cutCakeSlice()">
     <div class="cake-flame" id="cFlame"></div>
     <div style="width:4px; height:14px; background:#fff; position:absolute; top:36px; left:108px;"></div>
-    <div class="cake-base"><span style="font-size:11px; color:#ffccd5; font-weight:bold;">HAPPY BIRTHDAY</span></div>
+    <div class="cake-base"><span style="font-size:10px; color:#ffccd5; font-weight:bold;">HAPPY BIRTHDAY</span></div>
     <div class="cake-slice" id="cSlice">TAP SLICE</div>
   </div>
   <p id="cakeTxt" style="font-size:13px; color:#ffd166; margin-top:8px;">Tap candle to light the cake flame</p>
@@ -180,16 +179,16 @@ body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystem
   <button id="btnS9" class="btn btn-disabled" onclick="toScreen(10)">OPEN MEMORY FEED</button>
 </div>
 
-<!-- S10: Feed Alternating Photo/Video -->
+<!-- S10: Feed Alternating Photo/Video with Auto Music Pause -->
 <div id="s10" class="screen">
   <h3 style="color:#ff2a6d; margin-bottom:10px;">Our Journey</h3>
   <div class="feed-container" id="autoFeed">
     <img src="photo1.jpg" class="feed-item" alt="Moment 1">
-    <video src="edit1.mp4" class="feed-item" controls playsinline></video>
+    <video src="edit1.mp4" class="feed-item vid-sync" controls playsinline></video>
     <img src="photo2.jpg" class="feed-item" alt="Moment 2">
-    <video src="feed-vid1.mp4" class="feed-item" controls playsinline></video>
+    <video src="feed-vid1.mp4" class="feed-item vid-sync" controls playsinline></video>
     <img src="photo3.jpg" class="feed-item" alt="Moment 3">
-    <video src="feed-vid2.mp4" class="feed-item" controls playsinline></video>
+    <video src="feed-vid2.mp4" class="feed-item vid-sync" controls playsinline></video>
     <img src="photo4.jpg" class="feed-item" alt="Moment 4">
     <div style="padding: 25px 10px; text-align: center;">
       <h2 style="color: #ff2a6d; margin-bottom: 8px;">HAPPY BIRTHDAY ZEENAT</h2>
@@ -199,19 +198,53 @@ body { background: #000; color: #fff; font-family: -apple-system, BlinkMacSystem
 </div>
 
 <script>
+var mainSong = document.getElementById('bgSong');
+
 function toScreen(n) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById('s' + n).classList.add('active');
+  var all = document.getElementsByClassName('screen');
+  for (var i = 0; i < all.length; i++) {
+    all[i].style.display = 'none';
+    all[i].classList.remove('active');
+  }
+  var target = document.getElementById('s' + n);
+  if(target) {
+    target.style.display = 'flex';
+    target.classList.add('active');
+  }
   if(n === 7) initHeartCatch();
   if(n === 8) initMario();
-  if(n === 10) startAutoFeed();
+  if(n === 10) {
+    startAutoFeed();
+    bindVideoAudioSync();
+  }
+}
+
+// Video & Background Song Sync
+function bindVideoAudioSync() {
+  var vids = document.querySelectorAll('.vid-sync');
+  vids.forEach(function(v) {
+    v.onplay = function() {
+      if(mainSong) mainSong.pause();
+    };
+    v.onpause = function() {
+      if(mainSong) mainSong.play().catch(function(){});
+    };
+    v.onended = function() {
+      if(mainSong) mainSong.play().catch(function(){});
+    };
+  });
 }
 
 // S1: Auth
 function checkAuth() {
-  const v = document.getElementById('passCode').value.trim().toLowerCase();
-  if(v === 'zeenu' || v === 'zeenat' || v === '1234' || v === 'samar') {
-    document.getElementById('bgSong').play().catch(()=>{});
+  var inp = document.getElementById('passCode');
+  var v = (inp ? inp.value : '').trim().toLowerCase();
+  
+  try {
+    if(mainSong) mainSong.play().catch(function(){});
+  } catch(e) {}
+
+  if(v === '' || v === 'zeenu' || v === 'zeenat' || v === '1234' || v === 'samar') {
     toScreen(2);
   } else {
     alert('Passcode is zeenu');
@@ -219,8 +252,8 @@ function checkAuth() {
 }
 
 // S2: Cake & Candle
-let isLit = false;
-let isCut = false;
+var isLit = false;
+var isCut = false;
 function lightCake() {
   if(isLit) return;
   isLit = true;
@@ -235,7 +268,7 @@ function cutCakeSlice() {
   }
   if(isCut) return;
   isCut = true;
-  const slice = document.getElementById('cSlice');
+  var slice = document.getElementById('cSlice');
   slice.style.transform = 'translate(18px, -15px)';
   slice.innerText = 'I LOVE YOU';
   document.getElementById('cakeTxt').innerText = "I LOVE YOU! Happy Birthday!";
@@ -243,8 +276,8 @@ function cutCakeSlice() {
 }
 
 // S3: Frameless Photos
-let fIdx = 0;
-const fPhotos = [
+var fIdx = 0;
+var fPhotos = [
   { img: 'photo1.jpg', cap: 'The sweetest smile' },
   { img: 'photo2.jpg', cap: 'Special moments together' },
   { img: 'photo3.jpg', cap: 'My favorite person forever' },
@@ -260,9 +293,9 @@ function nextFramelessPhoto() {
 }
 
 // S4: Diary
-let dIdx = 0;
-const diaries = [
-  { h: "Entry #1", b: "Happy Birthday to the one who makes everything feel brighter and calmer. Having you in my life is something I am grateful for every single day." },
+var dIdx = 0;
+var diaries = [
+  { h: "Entry #1", b: "Happy Birthday to the most special person. Your presence brings peace and immense happiness into my life every single day." },
   { h: "Entry #2", b: "Every conversation, laugh, and memory with you means the world to me. You make the ordinary feel truly special." },
   { h: "Entry #3", b: "I promise to always stand by your side, support your ambitions, and care for you unconditionally. Happy Birthday Zeenat!" }
 ];
@@ -273,22 +306,22 @@ function nextDiary() {
     document.getElementById('dBody').innerText = diaries[dIdx].b;
   }
   if(dIdx === diaries.length - 1) {
-    const btn = document.getElementById('btnS4');
+    var btn = document.getElementById('btnS4');
     btn.innerText = "PROCEED TO CLEANUP";
-    btn.onclick = () => toScreen(5);
+    btn.onclick = function() { toScreen(5); };
   }
 }
 
 // S5: Moveable Trash Words
-let trashLeft = 5;
+var trashLeft = 5;
 function moveToTrash(el) {
-  const bin = document.getElementById('binTarget').getBoundingClientRect();
-  const r = el.getBoundingClientRect();
-  const dx = bin.left + bin.width/2 - (r.left + r.width/2);
-  const dy = bin.top + bin.height/2 - (r.top + r.height/2);
-  el.style.transform = `translate(${dx}px, ${dy}px) scale(0.2)`;
+  var bin = document.getElementById('binTarget').getBoundingClientRect();
+  var r = el.getBoundingClientRect();
+  var dx = bin.left + bin.width/2 - (r.left + r.width/2);
+  var dy = bin.top + bin.height/2 - (r.top + r.height/2);
+  el.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(0.2)';
   el.style.opacity = '0';
-  setTimeout(() => {
+  setTimeout(function() {
     el.remove();
     trashLeft--;
     if(trashLeft > 0) {
@@ -301,15 +334,15 @@ function moveToTrash(el) {
 }
 
 // S6: Moveable Heart Words
-let heartsLeft = 5;
+var heartsLeft = 5;
 function moveToHeart(el) {
-  const target = document.getElementById('heartTarget').getBoundingClientRect();
-  const r = el.getBoundingClientRect();
-  const dx = target.left + target.width/2 - (r.left + r.width/2);
-  const dy = target.top + target.height/2 - (r.top + r.height/2);
-  el.style.transform = `translate(${dx}px, ${dy}px) scale(0.2)`;
+  var target = document.getElementById('heartTarget').getBoundingClientRect();
+  var r = el.getBoundingClientRect();
+  var dx = target.left + target.width/2 - (r.left + r.width/2);
+  var dy = target.top + target.height/2 - (r.top + r.height/2);
+  el.style.transform = 'translate(' + dx + 'px, ' + dy + 'px) scale(0.2)';
   el.style.opacity = '0';
-  setTimeout(() => {
+  setTimeout(function() {
     el.remove();
     heartsLeft--;
     if(heartsLeft > 0) {
@@ -322,19 +355,19 @@ function moveToHeart(el) {
 }
 
 // S7: Heart Catch Game
-let hCaught = 0;
-let fallingHearts = [];
+var hCaught = 0;
+var fallingHearts = [];
 function initHeartCatch() {
-  const c = document.getElementById('heartCanvas');
-  const ctx = c.getContext('2d');
+  var c = document.getElementById('heartCanvas');
+  var ctx = c.getContext('2d');
   hCaught = 0;
   fallingHearts = [];
-  for(let i=0; i<5; i++) {
+  for(var i=0; i<5; i++) {
     fallingHearts.push({ x: 30 + Math.random()*240, y: 25 + Math.random()*130, r: 16 });
   }
   function draw() {
     ctx.clearRect(0,0,c.width,c.height);
-    fallingHearts.forEach(h => {
+    fallingHearts.forEach(function(h) {
       ctx.fillStyle = '#f72585';
       ctx.beginPath();
       ctx.arc(h.x, h.y, h.r, 0, Math.PI*2);
@@ -346,10 +379,10 @@ function initHeartCatch() {
   }
   draw();
   c.onclick = function(e) {
-    const rect = c.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    fallingHearts = fallingHearts.filter(h => {
+    var rect = c.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    var y = e.clientY - rect.top;
+    fallingHearts = fallingHearts.filter(function(h) {
       if(Math.hypot(h.x - x, h.y - y) < h.r + 8) {
         hCaught++;
         document.getElementById('hScore').innerText = "Hearts Caught: " + hCaught + " / 5";
@@ -362,39 +395,25 @@ function initHeartCatch() {
   };
 }
 
-// S8: 4-Frame Mario Runner
-let mx = 20, my = 140, mJ = false, mF = 0;
+// S8: Mario Runner
+var mx = 20, my = 140, mJ = false, mF = 0;
 function initMario() {
-  const c = document.getElementById('marioCanvas');
-  const ctx = c.getContext('2d');
+  var c = document.getElementById('marioCanvas');
+  var ctx = c.getContext('2d');
   function drawMario() {
     ctx.clearRect(0,0,c.width,c.height);
-    // Ground
     ctx.fillStyle = '#1b4332';
     ctx.fillRect(0, 160, c.width, 30);
-    // Goal
     ctx.fillStyle = '#d90429';
     ctx.fillRect(250, 120, 25, 40);
     ctx.fillStyle = '#fff';
     ctx.font = '9px sans-serif';
     ctx.fillText('ZEENAT', 245, 114);
-    // Character Frame
     ctx.fillStyle = '#48cae4';
-    ctx.fillRect(mx, my - 20, 12, 20); // body
+    ctx.fillRect(mx, my - 20, 12, 20);
     ctx.fillStyle = '#ffd166';
-    ctx.fillRect(mx + 1, my - 30, 10, 10); // head
+    ctx.fillRect(mx + 1, my - 30, 10, 10);
     ctx.fillStyle = '#fff';
     if(mF === 0) { ctx.fillRect(mx, my, 4, 10); ctx.fillRect(mx + 8, my, 4, 10); }
     else if(mF === 1) { ctx.fillRect(mx - 2, my, 4, 8); ctx.fillRect(mx + 8, my, 4, 12); }
-    else if(mF === 2) { ctx.fillRect(mx + 2, my, 4, 10); ctx.fillRect(mx + 6, my, 4, 10); }
-    else { ctx.fillRect(mx - 2, my, 4, 12); ctx.fillRect(mx + 8, my, 4, 8); }
-  }
-  drawMario();
-  window.drawMario = drawMario;
-}
-function mJump() {
-  if(mJ) return;
-  mJ = true;
-  my = 95;
-  window.drawMario();
-  setTimeout(() => { my = 140; mJ = false; 
+    else if(mF === 2) { ctx.fillRect(mx + 2, my, 4, 10); ctx.fillRect(m
