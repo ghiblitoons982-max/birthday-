@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Happy Birthday Zeenat 💖</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; user-select: none; }
+  body { font-family: sans-serif; background: #000; overflow: hidden; width: 100vw; height: 100vh; color: #fff; }
+  .screen { display: none; width: 100vw; height: 100vh; position: absolute; top: 0; left: 0; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 20px; overflow-y: auto; }
+  .active { display: flex; }
+  .btn-main { background: #ff4081; color: #fff; border: none; border-radius: 25px; padding: 12px 24px; font-size: 15px; font-weight: bold; cursor: pointer; margin-top: 15px; }
+  .btn-disabled { opacity: 0.35; pointer-events: none; }
+  .card { background: rgba(255,255,255,0.95); border-radius: 18px; padding: 20px; width: 90%; max-width: 320px; color: #333; }
+  .in-pass { width: 100%; padding: 10px; border: 2px solid #ff4081; border-radius: 10px; font-size: 16px; text-align: center; margin: 10px 0; outline: none; }
+  .quiz-opt { background: #311b92; color: #fff; padding: 10px; border-radius: 10px; margin: 8px 0; cursor: pointer; }
+  .opt-c { background: #00c853 !important; }
+  .opt-w { background: #d50000 !important; }
+  .tray { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 300px; margin-top: 15px; }
+  .tok { background: #1e88e5; color: #fff; padding: 8px 14px; border-radius: 16px; font-size: 13px; font-weight: bold; cursor: pointer; }
+  .box-d { background: #fff; border: 2px dashed #f48fb1; border-radius: 14px; width: 90%; max-width: 320px; height: 260px; overflow-y: scroll; padding: 15px; text-align: left; color: #4a148c; font-size: 14px; line-height: 1.5; }
+  .map-box { position: relative; width: 90%; max-width: 300px; height: 280px; background: #e0f2fe; border-radius: 14px; overflow: hidden; margin: 10px auto; }
+  .pin { position: absolute; font-size: 32px; transition: all 1s ease; cursor: pointer; }
+  .cvs { border: 2px solid #ff4081; border-radius: 10px; background: #05010e; width: 90%; max-width: 300px; height: 200px; }
+</style>
+</head>
+<body>
+
+<!-- 1. Password -->
+<div id="p1" class="screen active">
+  <div class="card">
+    <h2 style="color:#c2185b;">Secret Portal 🔐</h2>
+    <input type="password" id="pass" class="in-pass" placeholder="Enter Password">
+    <button class="btn-main" id="bUn">Unlock Surprise ✨</button>
+  </div>
+</div>
+
+<!-- 2. Cake Cut -->
+<div id="p2" class="screen" style="background:#ffe0b2; color:#333;">
+  <h2 style="color:#e65100;">Cut Birthday Cake! 🎂</h2>
+  <div id="cake" style="font-size:80px; margin:20px 0; cursor:pointer;">🎂</div>
+  <p id="cMsg" style="font-weight:bold;">Tap cake to cut a slice!</p>
+  <button id="bC" class="btn-main btn-disabled">Next: Memories ➜</button>
+</div>
+
+<!-- 3. Photo Memories -->
+<div id="p3" class="screen" style="background:#0d2040;">
+  <h3>Our Memories 📸</h3>
+  <div class="card" id="memCard" style="margin:15px auto; height:260px; display:flex; flex-direction:column; justify-content:center; align-items:center;">
+    <span style="font-size:50px;">💖</span>
+    <p id="cap" style="margin-top:15px; font-weight:bold; color:#1b3b6f;">Memory 1: Beautiful moments with you!</p>
+  </div>
+  <p style="font-size:12px; color:#aaa;">(Tap box to switch photo)</p>
+  <button id="bP3" class="btn-main btn-disabled">Read Letters ➜</button>
+</div>
+
+<!-- 4. Letters Diary -->
+<div id="p4" class="screen" style="background:#fce4ec; color:#333;">
+  <h2 style="color:#880e4f; margin-bottom:10px;">Letters for You 💌</h2>
+  <div class="box-d" id="dBox">
+    <h3 id="lTitle" style="color:#d81b60; margin-bottom:8px;">Letter #1 🌸</h3>
+    <p id="lTxt">Dear Zeenat, on your birthday, I want to remind you how special you are to me. You bring peace and joy into my life every day! 💖</p>
+  </div>
+  <button id="bL" class="btn-main">Next Letter ➜</button>
+</div>
+
+<!-- 5. Quiz -->
+<div id="p5" class="screen" style="background:#0a0014;">
+  <div class="card" style="background:#1a0033; color:#fff; border:2px solid #b388ff;">
+    <h3>Q1: Who loves who the most?</h3>
+    <div class="quiz-opt" onclick="runQuiz(this, 1)">Samar loves Zeenat infinitely ❤️</div>
+    <div class="quiz-opt" onclick="runQuiz(this, 0)">Both equally</div>
+    <div class="quiz-opt" onclick="runQuiz(this, 0)">It is a secret 🤫</div>
+    <div class="quiz-opt" onclick="runQuiz(this, 0)">Zeenat loves Samar more</div>
+  </div>
+  <button id="bQ" class="btn-main btn-disabled">Clear Tensions ➜</button>
+</div>
+
+<!-- 6. Dustbin -->
+<div id="p6" class="screen" style="background:#bbdefb; color:#333;">
+  <h2 style="color:#0d47a1;">Dump All Problems 🗑️</h2>
+  <div style="font-size:60px; margin:10px 0;">🗑️</div>
+  <p style="font-size:13px; color:#1565c0;">Tap each problem to throw in bin!</p>
+  <div class="tray" id="tTray">
+    <div class="tok" onclick="delTok(this)">Tension</div>
+    <div class="tok" onclick="delTok(this)">Problem</div>
+    <div class="tok" onclick="delTok(this)">BF Problem</div>
+    <div class="tok" onclick="delTok(this)">Mom Problem</div>
+    <div class="tok" onclick="delTok(this)">Stress</div>
+  </div>
+  <button id="bBin" class="btn-main btn-disabled">Play Cat Game ➜</button>
+</div>
+
+<!-- 7. Cat Shooter -->
+<div id="p7" class="screen">
+  <h3 style="color:#e1bee7; margin-bottom:8px;">Blast The Stress! 🐱</h3>
+  <canvas id="cCanvas" class="cvs" width="300" height="200"></canvas>
+  <p id="cScore" style="margin-top:8px; font-size:14px;">Destroyed: 0 / 5</p>
+  <button id="bCat" class="btn-main btn-disabled">Mario Mini Game ➜</button>
+</div>
+
+<!-- 8. Mario Adventure -->
+<div id="p8" class="screen" style="background:#5c94fc;">
+  <h3 style="font-family:monospace; margin-bottom:8px;">MARIO ADVENTURE 🍄</h3>
+  <canvas id="mCanvas" class="cvs" style="background:#5c94fc;" width="300" height="180"></canvas>
+  <div style="display:flex; gap:15px; margin-top:10px;">
+    <button class="btn-main" style="background:#fff; color:#000;" id="mJmp">⬆ Jump</button>
+    <button class="btn-main" style="background:#fff; color:#000;" id="mRgt">▶ Move</button>
+  </div>
+  <button id="bMar" class="btn-main btn-disabled">See Distance ➜</button>
+</div>
+
+<!-- 9. Delhi to Bijnor Map -->
+<div id="p9" class="screen" style="background:#eceff1; color:#333;">
+  <h3>Delhi to Bijnor (161 KM) 📍</h3>
+  <div class="map-box">
+    <div id="pS" class="pin" style="bottom:15px; left:15px;" onclick="meet()">👦</div>
+    <div id="pZ" class="pin" style="top:15px; right:15px;" onclick="meet()">👧</div>
+  </div>
+  <p style="font-size:12px; color:#666;">(Tap character to meet)</p>
+  <button id="bMap" class="btn-main btn-disabled">Collect Hearts ➜</button>
+</div>
+
+<!-- 10. Night Sky Hearts -->
+<div id="p10" class="screen" style="background:#0f172a;">
+  <h2>Drop Words into Heart 💖</h2>
+  <div id="cHeart" style="font-size:60px; margin:15px 0;">💖</div>
+  <div class="tray">
+    <div class="tok" onclick="delH(this)">Samar</div>
+    <div class="tok" onclick="delH(this)">Muezza</div>
+    <div class="tok" onclick="delH(this)">Bunny</div>
+    <div class="tok" onclick="delH(this)">Forever</div>
+  </div>
+  <button id="bH" class="btn-main btn-disabled">Make a Wish ➜</button>
+</div>
+
+<!-- 11. Matchstick Candle -->
+<div id="p11" class="screen" style="background:#121212;">
+  <h2>Light Your Candle 🕯️</h2>
+  <div id="cnd" style="font-size:60px; margin:20px 0;">🕯️</div>
+  <div id="mStk" style="font-size:45px; cursor:pointer;" onclick="lightCnd()">🔥🥢</div>
+  <button id="bCnd" class="btn-main btn-disabled">Watch Reel ➜</button>
+</div>
+
+<!-- 12. Vertical Reel -->
+<div id="p12" class="screen">
+  <div class="card" style="background:#222; color:#fff; height:320px; display:flex; align-items:center; justify-content:center;">
+    🎬 Reel Feed Video / Photo
+  </div>
+  <button id="bP12" class="btn-main">Video Edits ➜</button>
+</div>
+
+<!-- 13. Video Edits -->
+<div id="p13" class="screen" style="background:#f8bbd0; color:#333;">
+  <h2 style="color:#c2185b; margin-bottom:10px;">Cute Video Edits 🎬</h2>
+  <div class="card" style="background:#000; color:#fff; height:280px; display:flex; align-items:center; justify-content:center;">
+    🎬 Custom Video Edit
+  </div>
+  <button id="bP13" class="btn-main">Voice Notes ➜</button>
+</div>
+
+<!-- 14. Voice Player -->
+<div id="p14" class="screen" style="background:#f48fb1; color:#333;">
+  <div class="card" style="background:#4a2835; color:#fff;">
+    <h3>Zeenat Birthday Gift 🎀</h3>
+    <div id="vnBdg" style="background:#ff4081; padding:4px 10px; border-radius:12px; margin:15px auto; width:120px; font-size:13px;">5 Remaining</div>
+    <div style="font-size:24px; display:flex; justify-content:space-around; margin-top:10px; cursor:pointer;">
+      <span onclick="alert('Playing Voice Note 🎵')">⏯ Play</span>
+      <span onclick="nextVN()">⏭ Next</span>
+    </div>
+  </div>
+</div>
+
+<script>
+var curPage = 'p1';
+function nav(id) {
+  var s = document.querySelectorAll('.screen');
+  for (var i = 0; i < s.length; i++) s[i].classList.remove('active');
+  document.getElementById(id).classList.add('active');
+  if (id === 'p7') runCat();
+  if (id === 'p8') runMar();
+}
+
+document.getElementById('bUn').onclick = function() {
+  if (document.getElementById('pass').value.trim() !== '') nav('p2');
+};
+
+document.getElementById('cake').onclick = function() {
+  this.innerText = '🍰';
+  document.getElementById('cMsg').innerText = 'I Love You Zeenat 💖';
+  document.getElementById('bC').classList.remove('btn-disabled');
+};
+document.getElementById('bC').onclick = function() { nav('p3'); };
+
+var mI = 0;
+var mems = ['Memory 1: Beautiful moments!', 'Memory 2: Late night talks! 🥰', 'Memory 3: All our smiles! 💖', 'Memory 4: Forever together! 👩‍❤️‍💋‍👨'];
+document.getElementById('memCard').onclick = function() {
+  if (mI < mems.length - 1) {
+    mI++;
+    document.getElementById('cap').innerText = mems[mI];
+    if (mI >= mems.length - 1) document.getElementById('bP3').classList.remove('btn-disabled');
+  }
+};
+document.getElementById('bP3').onclick = function() { nav('p4'); };
+
+var lI = 1;
+document.getElementById('bL').onclick = function() {
+  if (lI < 10) {
+    lI++;
+    document.getElementById('lTitle').innerText = 'Letter #' + lI + ' 🌸';
+    document.getElementById('lTxt').innerText = 'Letter ' + lI + ' content: You mean the world to me Zeenat. Always yours! 💖';
+    if (lI === 10) this.innerText = 'Go to Quiz ➜';
+  } else {
+    nav('p5');
+  }
+};
+
+function runQuiz(el, ok) {
+  if (ok === 1) {
+    el.classList.add('opt-c');
+    document.getElementById('bQ').classList.remove('btn-disabled');
+  } else {
+    el.classList.add('opt-w');
+  }
+}
+document.getElementById('bQ').onclick = function() { nav('p6'); };
+
+var tK = 0;
+function delTok(el) {
+  el.style.display = 'none';
+  tK++;
+  if (tK >= 4) document.getElementById('bBin').classList.remove('btn-disabled');
+}
+document.getElementById('bBin').onclick = function() { nav('p7'); };
+
+function runCat() {
+  var cvs = document.getElementById('cCanvas');
+  var ctx = cvs.getContext('2d');
+  var sc = 0, y = 10;
+  function loop() {
+    ctx.clearRect(0,0,300,200);
+    ctx.fillStyle = '#ff4081'; ctx.fillText('🐱 Cat Laser', 110, 180);
+    ctx.fillStyle = '#ff5252'; ctx.fillRect(100, y, 100, 18);
+    ctx.fillStyle = '#fff'; ctx.fillText('Stress / Anger', 110, y + 13);
+    y += 2.5;
+    if (y > 170) {
+      sc++; y = 10;
+      document.getElementById('cScore').innerText = 'Destroyed: ' + sc + ' / 5';
+    }
+    if (sc < 5) requestAnimationFrame(loop);
+    else document.getElementById('bCat').classList.remove('btn-disabled');
+  }
+  loop();
+}
+document.getElementById('bCat').onclick = function() { nav('p8'); };
+
+var mX = 20, mY = 130, mVY = 0, jmp = false;
+function runMar() {
+  var cvs = document.getElementById('mCanvas');
+  var ctx = cvs.getContext('2d');
+  function loop() {
+    if (jmp) {
+      mY += mVY; mVY += 0.5;
+      if (mY >= 130) { mY = 130; jmp = false; }
+    }
+    ctx.clearRect(0,0,300,180);
+    ctx.fillStyle = '#c84c0c'; ctx.fillRect(0, 150, 300, 30);
+    ctx.fillStyle = '#ff4081'; ctx.beginPath(); ctx.arc(mX, mY, 10, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#fff'; ctx.fillText('🏠 Samar 🎂', 220, 120);
+    requestAnimationFrame(loop);
+  }
+  loop();
+}
+document.getElementById('mJmp').onclick = function() { if (!jmp) { mVY = -8; jmp = true; } };
+document.getElementById('mRgt').onclick = function() {
+  mX += 20;
+  if (mX >= 210) document.getElementById('bMar').classList.remove('btn-disabled');
+};
+document.getElementById('bMar').onclick = function() { nav('p9'); };
+
+function meet() {
+  document.getElementById('pS').style.bottom = '110px';
+  document.getElementById('pS').style.left = '110px';
+  document.getElementById('pZ').style.top = '110px';
+  document.getElementById('pZ').style.right = '110px';
+  setTimeout(function() {
+    alert('Distance means nothing when love is everything! 👩‍❤️‍💋‍👨');
+    document.getElementById('bMap').classList.remove('btn-disabled');
+  }, 1100);
+}
+document.getElementById('bMap').onclick = function() { nav('p10'); };
+
+var hC = 0;
+function delH(el) {
+  el.style.display = 'none';
+  hC++;
+  if (hC >= 3) document.getElementById('bH').classList.remove('btn-disabled');
+}
+document.getElementById('bH').onclick = function() { nav('p11'); };
+
+function lightCnd() {
+  document.getElementById('mStk').style.display = 'none';
+  document.getElementById('cnd').innerText = '🎂🔥';
+  document.getElementById('bCnd').classList.remove('btn-disabled');
+}
+document.getElementById('bCnd').onclick = function() { nav('p12'); };
+document.getElementById('bP12').onclick = function() { nav('p13'); };
+document.getElementById('bP13').onclick = function() { nav('p14'); };
+
+var vLeft = 5;
+function nextVN() {
+  if (vLeft > 1) {
+    vLeft--;
+    document.getElementById('vnBdg').innerText = vLeft + ' Remaining';
+  } else {
+    document.getElementById('vnBdg').innerText = 'All Done!';
+    alert('Happy Birthday Zeenat! 💖');
+  }
+}
+</script>
+</body>
+</html>
